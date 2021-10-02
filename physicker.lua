@@ -15,8 +15,8 @@ local xshift = 0
 local xdir = 1
 
 function physicker:load()
-    local spritesheet = love.graphics.newImage("assets/sprites/patient_1.png")
-    local aseprite_meta = "assets/sprites/patient_1.json"
+    local spritesheet = love.graphics.newImage("assets/sprites/patients/patient_1.png")
+    local aseprite_meta = "assets/sprites/patients/patient_1.json"
     self.animation = {
         idle_fwd = peachy.new(aseprite_meta, spritesheet, "Idle_Fwd"),
         walk_fwd = peachy.new(aseprite_meta, spritesheet, "Walk_Fwd"),
