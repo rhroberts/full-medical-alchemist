@@ -24,7 +24,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
     "sourceSize": { "w": 12, "h": 22 },
-    "duration": 150
+    "duration": 300
    },
    {
     "filename": "patient_1 3.aseprite",
@@ -33,7 +33,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
     "sourceSize": { "w": 12, "h": 22 },
-    "duration": 150
+    "duration": 300
    },
    {
     "filename": "patient_1 4.aseprite",
@@ -42,7 +42,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
     "sourceSize": { "w": 12, "h": 22 },
-    "duration": 150
+    "duration": 300
    },
    {
     "filename": "patient_1 5.aseprite",
@@ -51,7 +51,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
     "sourceSize": { "w": 12, "h": 22 },
-    "duration": 150
+    "duration": 300
    },
    {
     "filename": "patient_1 6.aseprite",
@@ -132,7 +132,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
     "sourceSize": { "w": 12, "h": 22 },
-    "duration": 150
+    "duration": 300
    },
    {
     "filename": "patient_1 15.aseprite",
@@ -141,7 +141,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
     "sourceSize": { "w": 12, "h": 22 },
-    "duration": 150
+    "duration": 300
    },
    {
     "filename": "patient_1 16.aseprite",
@@ -150,7 +150,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
     "sourceSize": { "w": 12, "h": 22 },
-    "duration": 150
+    "duration": 300
    },
    {
     "filename": "patient_1 17.aseprite",
@@ -159,7 +159,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
     "sourceSize": { "w": 12, "h": 22 },
-    "duration": 150
+    "duration": 300
    }
  ],
  "meta": {
