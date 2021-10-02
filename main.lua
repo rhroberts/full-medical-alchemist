@@ -6,9 +6,8 @@
 -- These are their stories.
 
 -- Load Modules / Libraries
--- local json = require"3rd/json/json"
-local background = require"background"
-local menu = require"menu"
+local physicker = require"physicker"
+local frog = require"frog"
 
 -- Declare Global Parameters Here
 WindowWidth = love.graphics.getWidth()
@@ -18,23 +17,18 @@ WindowHeight = love.graphics.getHeight()
 
 -- A primary callback of LÖVE that is called only once
 function love.load()
-
+    physicker:load()
+    frog:load()
 end
 
 -- A primary callback of LÖVE that is called continuously
 function love.update(dt)
-
+    physicker:update(dt)
+    frog:update(dt)
 end
 
 -- A primary callback of LÖVE that is called continuously
 function love.draw()
-    --  Draw the game background
-    --  love.graphics.push()
-    --	love.graphics.scale(2, 2)
-    background:draw()
-    --  love.graphics.pop()
-
-    --  Draw the menu
-    menu:draw()
-
+    physicker:draw()
+    frog:draw()
 end
