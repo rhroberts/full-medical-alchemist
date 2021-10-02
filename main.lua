@@ -8,12 +8,14 @@
 -- Load Modules / Libraries
 local physicker = require"physicker"
 local frog = require"frog"
+local textBox = require"textbox"
 
 -- Declare Global Parameters Here
 WindowWidth = love.graphics.getWidth()
 WindowHeight = love.graphics.getHeight()
 
 -- Define Local Parameters Here
+local greeting = textBox("Hello! This is a longer message.")
 
 -- A primary callback of LÖVE that is called only once
 function love.load()
@@ -31,4 +33,5 @@ end
 function love.draw()
     physicker:draw()
     frog:draw()
+    greeting.draw(100, 100)
 end
