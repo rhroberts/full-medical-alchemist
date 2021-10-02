@@ -1,0 +1,74 @@
+{ "frames": [
+   {
+    "filename": "patient_1_fwd 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_1_fwd 1.aseprite",
+    "frame": { "x": 12, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_1_fwd 2.aseprite",
+    "frame": { "x": 24, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 150
+   },
+   {
+    "filename": "patient_1_fwd 3.aseprite",
+    "frame": { "x": 36, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 150
+   },
+   {
+    "filename": "patient_1_fwd 4.aseprite",
+    "frame": { "x": 48, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 150
+   },
+   {
+    "filename": "patient_1_fwd 5.aseprite",
+    "frame": { "x": 60, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 150
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.29-x64",
+  "image": "patient_1_fwd.png",
+  "format": "RGBA8888",
+  "size": { "w": 72, "h": 22 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 1, "direction": "forward" },
+   { "name": "Walk", "from": 2, "to": 5, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "patient1", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
