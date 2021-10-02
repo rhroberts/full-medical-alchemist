@@ -21,8 +21,8 @@ local directions = {"w", "s", "a", "d"}
 local action = false
 
 function frog:load()
-    local spritesheet = love.graphics.newImage("assets/sprites/frog.png")
-    local aseprite_meta = "assets/sprites/frog.json"
+    local spritesheet = love.graphics.newImage("assets/sprites/patients/frog.png")
+    local aseprite_meta = "assets/sprites/patients/frog.json"
     self.animation = {
         idle_fwd = peachy.new(aseprite_meta, spritesheet, "Idle_Fwd"),
         walk_fwd = peachy.new(aseprite_meta, spritesheet, "Walk_Fwd"),
