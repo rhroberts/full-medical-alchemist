@@ -6,9 +6,13 @@ local peachy = require("3rd/peachy/peachy")
 local physicker = {
     x = 0,
     y = 0,
-    xVel = 0,
-    yVel = 0,
+    xVel = 50,
+    yVel = 50,
+    anim = "idle_fwd",
 }
+local keypress = "d"
+local xshift = 0
+local xdir = 1
 
 function physicker:load()
     local spritesheet = love.graphics.newImage("assets/sprites/patient_1.png")
@@ -24,27 +28,53 @@ function physicker:load()
 end
 
 function physicker:draw()
-    self.animation["walk_fwd"]:draw(self.x, self.y)
+    love.graphics.push()
+	love.graphics.scale(3, 3)
+    self.animation[self.anim]:draw(self.x+xshift, self.y, 0, xdir, 1)
+    love.graphics.pop()
 end
 
 function physicker:update(dt)
     self:move(dt)
-    self.animation["walk_fwd"]:update(dt)
+    self.animation[self.anim]:update(dt)
 end
 
 function physicker:move(dt)
+    -- Set upward animations
     if love.keyboard.isDown("w") then
         self.y = self.y - self.yVel * dt
-    end
-    if love.keyboard.isDown("a") then
+        self.anim = "walk_bwd"
+        keypress = "w"
+    -- Set left animations
+    elseif love.keyboard.isDown("a") then
         self.x = self.x - self.xVel * dt
-    end
-    if love.keyboard.isDown("s") then
+        self.anim = "walk_side"
+        keypress = "a"
+        xdir = -1
+        xshift = self.animation[self.anim]:getWidth()
+    -- Set downward animations
+    elseif love.keyboard.isDown("s") then
         self.y = self.y + self.yVel * dt
-    end
-    if love.keyboard.isDown("d") then
+        self.anim = "walk_fwd"
+        keypress = "s"
+    -- Set right animations
+    elseif love.keyboard.isDown("d") then
         self.x = self.x + self.xVel * dt
+        self.anim = "walk_side"
+        keypress = "d"
+        xdir = 1
+        xshift = 0
+    -- Set idle animations
+    else
+        if self.anim == "walk_fwd" then
+            self.anim = "idle_fwd"
+        elseif self.anim == "walk_bwd" then
+            self.anim = "idle_bwd"
+        elseif self.anim == "walk_side" then
+            self.anim = "idle_side"
+        end
     end
+    
 end
 
 return physicker

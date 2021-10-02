@@ -1,0 +1,21 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Windows Launch The Medical Alchemist",
+            "type": "process",
+            "command": "C:\\Program Files\\LOVE\\love.exe",
+            "args": [
+                "--console",
+                "${workspaceFolder}\\"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
