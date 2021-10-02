@@ -1,0 +1,18 @@
+{
+    "Lavender": {
+        "description": "Beautiful boughs of purple lavender",
+        "relative_sprite_path": "assets/sprites/ingredients/lavender.png",
+        "relative_metadata_path": "assets/sprites/ingredients/lavender.json",
+        "base_properties": {
+            "blood": 10,
+            "yellow_bile": -4,
+            "black_bile": 0,
+            "phlegm": 3
+        },
+        "concoction_propensities": {
+            "salve": 1,
+            "potion": 0,
+            "tincture": 0
+        }
+    }
+}

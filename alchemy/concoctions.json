@@ -1,0 +1,8 @@
+{
+    "Salve": {
+        "description": "A healing salve with unknown properties. I knew I should have studied more..",
+        "relative_sprite_path": "../assets/sprites/concoctions/salve.png",
+        "relative_metadata_path": "../assets/sprites/concoctions/salve.json",
+        "relative_mask_texture_path": "../assets/sprites/concoctions/salve_mask"
+    }
+}
