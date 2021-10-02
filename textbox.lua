@@ -27,7 +27,7 @@ local function textBox(text, font, fontSize, fontColor, sound)
     local attrs = {
         x = 0,
         y = 0,
-        boxWidth = 300,  -- textbox width
+        boxWidth = 200,  -- textbox width
         fontSize = fontSize or 24,
         color = fontColor or {1, 0, 0},
         -- totalPages = ...
@@ -47,7 +47,7 @@ local function textBox(text, font, fontSize, fontColor, sound)
     local function drawTextBox(x, y)
         x = x or state.x
         x = y or state.y
-        love.graphics.rectangle("line", x, y, attrs.boxWidth, 300, 5, 5)
+        love.graphics.rectangle("line", x, y, attrs.boxWidth, 200, 5, 5)
         love.graphics.printf(
             {attrs.color, assets.text}, assets.font, x, y, attrs.boxWidth, "center"
         )
@@ -55,8 +55,6 @@ local function textBox(text, font, fontSize, fontColor, sound)
 
     local function updateTextBox(dt)
     end
-
-    print(numPages())
 
     return {
         load = loadTextBox,
