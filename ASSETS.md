@@ -10,7 +10,6 @@
 
 ### Sound Effects
 
-- [ ] Walking
 - [ ] Picking up item
 - [ ] Administering potions
 - 
@@ -29,9 +28,9 @@
 
 ## Patients
 
-- [ ] Walking
-- [ ] Idle
-- [ ] Laying in bed/being sick
+- [x] Walking
+- [x] Idle
+- [x] Laying in bed/being sick
 
 ## Music
 
