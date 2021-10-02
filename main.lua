@@ -36,7 +36,7 @@ function love.draw()
     background:draw()
     --  love.graphics.pop()
 
-
+    --  Draw the menu
     menu:draw()
 
 end
