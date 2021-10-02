@@ -7,6 +7,8 @@
 
 -- Load Modules / Libraries
 -- local json = require"3rd/json/json"
+local background = require"background"
+local menu = require"menu"
 
 -- Declare Global Parameters Here
 WindowWidth = love.graphics.getWidth()
@@ -26,5 +28,13 @@ end
 
 -- A primary callback of LÖVE that is called continuously
 function love.draw()
+    --  Draw the game background
+    --  love.graphics.push()
+    --	love.graphics.scale(2, 2)
+    background:draw()
+    --  love.graphics.pop()
+
+    --  Draw the menu
+    menu:draw()
 
 end
