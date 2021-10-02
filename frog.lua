@@ -55,15 +55,17 @@ function frog:update(dt)
         self.spawn = true
     end
     -- Process time accumulation
-    accumulator = accumulator + dt
-    if accumulator > duration then
-        direction = math.random(4)
-        accumulator = 0
-        duration = math.random()*2.0
-        action = not action
+    if self.spawn then
+        accumulator = accumulator + dt
+        if accumulator > duration then
+            direction = math.random(4)
+            accumulator = 0
+            duration = math.random()*2.0
+            action = not action
+        end
+        self:move(dt)
+        self.animation[self.anim]:update(dt)
     end
-    self:move(dt)
-    self.animation[self.anim]:update(dt)
 end
 
 function frog:move(dt)
