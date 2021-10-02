@@ -7,3 +7,6 @@
 [submodule "3rd/pprint"]
 	path = 3rd/pprint
 	url = https://github.com/jagt/pprint.lua.git
+[submodule "3rd/peachy"]
+	path = 3rd/peachy
+	url = https://github.com/rhroberts/peachy.git
