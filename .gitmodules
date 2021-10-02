@@ -1,3 +1,6 @@
 [submodule "3rd/json/json.lua"]
 	path = 3rd/json/json.lua
 	url = https://github.com/rxi/json.lua.git
+[submodule "3rd/sti"]
+	path = 3rd/sti
+	url = https://github.com/karai17/Simple-Tiled-Implementation.git
