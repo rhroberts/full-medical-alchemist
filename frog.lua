@@ -1,11 +1,12 @@
--- the main character, Mr. Physicker
+-- the main character, Mr. frog
 
 local peachy = require("3rd/peachy/peachy")
 
--- only one physicker, so no metatable shenanigans here
-local physicker = {
-    x = 0,
-    y = 0,
+-- only one frog, so no metatable shenanigans here
+local frog = {
+    spawn = false,
+    x = 50,
+    y = 50,
     xVel = 50,
     yVel = 50,
     anim = "idle_fwd",
@@ -13,10 +14,15 @@ local physicker = {
 local keypress = "d"
 local xshift = 0
 local xdir = 1
+local duration = math.random()*2.0
+local accumulator = 0.0
+local direction = math.random(4)
+local directions = {"w", "s", "a", "d"}
+local action = false
 
-function physicker:load()
-    local spritesheet = love.graphics.newImage("assets/sprites/patient_1.png")
-    local aseprite_meta = "assets/sprites/patient_1.json"
+function frog:load()
+    local spritesheet = love.graphics.newImage("assets/sprites/frog.png")
+    local aseprite_meta = "assets/sprites/frog.json"
     self.animation = {
         idle_fwd = peachy.new(aseprite_meta, spritesheet, "Idle_Fwd"),
         walk_fwd = peachy.new(aseprite_meta, spritesheet, "Walk_Fwd"),
@@ -25,28 +31,51 @@ function physicker:load()
         idle_side = peachy.new(aseprite_meta, spritesheet, "Idle_Side"),
         walk_side = peachy.new(aseprite_meta, spritesheet, "Walk_Side"),
     }
+    math.randomseed(os.time())
 end
 
-function physicker:draw()
-    love.graphics.push()
-	love.graphics.scale(3, 3)
-    self.animation[self.anim]:draw(self.x+xshift, self.y, 0, xdir, 1)
-    love.graphics.pop()
+function frog:draw()
+    if self.spawn then
+        love.graphics.push()
+        love.graphics.scale(3, 3)
+        self.animation[self.anim]:draw(self.x+xshift, self.y, 0, xdir, 1)
+        love.graphics.pop()
+    end
+    love.graphics.print("Duration: ", 400, 25)
+	love.graphics.print(duration, 500, 25)
+    love.graphics.print("Accumulator: ", 400, 50)
+	love.graphics.print(accumulator, 500, 50)
+    love.graphics.print("Action: ", 400, 75)
+	love.graphics.print(tostring(action), 500, 75)
 end
 
-function physicker:update(dt)
+function frog:update(dt)
+    -- Spawn the frog
+    if love.keyboard.isDown("y") then
+        self.spawn = true
+    end
+    -- Process time accumulation
+    accumulator = accumulator + dt
+    if accumulator > duration then
+        direction = math.random(4)
+        accumulator = 0
+        duration = math.random()*2.0
+        action = not action
+    end
     self:move(dt)
     self.animation[self.anim]:update(dt)
 end
 
-function physicker:move(dt)
+function frog:move(dt)
+    -- Define current direction
+    local dir = directions[direction]
     -- Set upward animations
-    if love.keyboard.isDown("w") then
+    if dir == "w" and action then
         self.y = self.y - self.yVel * dt
         self.anim = "walk_bwd"
         keypress = "w"
     -- Set downward animations
-    elseif love.keyboard.isDown("s") then
+    elseif dir == "s" and action then
         self.y = self.y + self.yVel * dt
         self.anim = "walk_fwd"
         keypress = "s"
@@ -59,14 +88,14 @@ function physicker:move(dt)
         end
     end
     -- Set left animations
-    if love.keyboard.isDown("a") then
+    if dir == "a" and action then
         self.x = self.x - self.xVel * dt
         self.anim = "walk_side"
         keypress = "a"
         xdir = -1
         xshift = self.animation[self.anim]:getWidth()
     -- Set right animations
-    elseif love.keyboard.isDown("d") then
+    elseif dir == "d" and action then
         self.x = self.x + self.xVel * dt
         self.anim = "walk_side"
         keypress = "d"
@@ -81,4 +110,4 @@ function physicker:move(dt)
     
 end
 
-return physicker
+return frog

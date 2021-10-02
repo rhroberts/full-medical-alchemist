@@ -7,6 +7,7 @@
 
 -- Load Modules / Libraries
 local physicker = require"physicker"
+local frog = require"frog"
 
 -- Declare Global Parameters Here
 WindowWidth = love.graphics.getWidth()
@@ -17,14 +18,17 @@ WindowHeight = love.graphics.getHeight()
 -- A primary callback of LÖVE that is called only once
 function love.load()
     physicker:load()
+    frog:load()
 end
 
 -- A primary callback of LÖVE that is called continuously
 function love.update(dt)
     physicker:update(dt)
+    frog:update(dt)
 end
 
 -- A primary callback of LÖVE that is called continuously
 function love.draw()
     physicker:draw()
+    frog:draw()
 end
