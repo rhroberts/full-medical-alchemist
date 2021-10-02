@@ -16,20 +16,6 @@
                 "kind": "build",
                 "isDefault": true
             }
-        },
-        {
-            "label": "Windows Launch Alchemy Test",
-            "type": "process",
-            "command": "C:\\Program Files\\LOVE\\love.exe",
-            "args": [
-                "--console",
-                "${workspaceFolder}\\alchemy"
-            ],
-            "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
         }
     ]
 }

@@ -8,6 +8,7 @@
 -- Load Modules / Libraries
 local physicker = require"physicker"
 local frog = require"frog"
+local Alchemy = require"alchemy/alchemy"
 
 -- Declare Global Parameters Here
 WindowWidth = love.graphics.getWidth()
@@ -17,6 +18,7 @@ WindowHeight = love.graphics.getHeight()
 
 -- A primary callback of LÖVE that is called only once
 function love.load()
+    alchemy = Alchemy:load()
     physicker:load()
     frog:load()
 end

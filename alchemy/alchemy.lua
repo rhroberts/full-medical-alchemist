@@ -3,7 +3,7 @@ json = require("../3rd/json/json")
 local Alchemy = {}
 local AlchemicalIngredient = {}
 local AlchemicalConcoction = {
-    shader = love.graphics.newShader("humor.frag")
+    shader = love.graphics.newShader("alchemy/humor.frag")
 }
 
 function Alchemy:load() 
@@ -13,6 +13,7 @@ end
 
 
 function Alchemy:load_ingredients()
+    print(package.path)
     local f = assert(io.open("alchemy/ingredients.json", "rb"))
     local ingredients_json = f:read("*all")
     f:close()
@@ -21,9 +22,6 @@ function Alchemy:load_ingredients()
 
     -- iterate through table and read in assets, set draw prototype
     for k, v in pairs(ingredients) do
-        -- os.execute("cd")
-        print(v.relative_sprite_path)
-        -- ingredients[k].sprite = love.graphics.newImage(v.relative_sprite_path)
         ingredients[k].sprite = love.graphics.newImage("assets/sprites/ingredients/lavender.png")
         setmetatable(ingredients[k], {__index = AlchemicalIngredient})
     end
