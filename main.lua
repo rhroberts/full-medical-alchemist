@@ -6,6 +6,7 @@
 -- These are their stories.
 
 -- Load Modules / Libraries
+local sti = require "3rd/sti/sti"
 local physicker = require"physicker"
 local frog = require"frog"
 
@@ -19,6 +20,10 @@ WindowHeight = love.graphics.getHeight()
 function love.load()
     physicker:load()
     frog:load()
+
+    -- Load map file
+    map = sti("assets/map/map.lua")
+    
 end
 
 -- A primary callback of LÖVE that is called continuously
