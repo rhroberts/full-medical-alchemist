@@ -11,12 +11,10 @@ local background = require"background"
 local menu = require"menu"
 
 -- Declare Global Parameters Here
--- WINDOW_WIDTH = 1280
--- WINDOW_HEIGHT = 720
+WindowWidth = love.graphics.getWidth()
+WindowHeight = love.graphics.getHeight()
 
 -- Define Local Parameters Here
-local sti = require"3rd/sti/sti"
-local player = require"player"
 
 -- A primary callback of LÖVE that is called only once
 function love.load()
@@ -40,4 +38,3 @@ function love.draw()
     menu:draw()
 
 end
-
