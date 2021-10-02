@@ -6,7 +6,7 @@
 -- These are their stories.
 
 -- Load Modules / Libraries
--- local json = require"3rd/json/json"
+local physicker = require"physicker"
 
 -- Declare Global Parameters Here
 WindowWidth = love.graphics.getWidth()
@@ -16,15 +16,15 @@ WindowHeight = love.graphics.getHeight()
 
 -- A primary callback of LÖVE that is called only once
 function love.load()
-
+    physicker:load()
 end
 
 -- A primary callback of LÖVE that is called continuously
 function love.update(dt)
-
+    physicker:update(dt)
 end
 
 -- A primary callback of LÖVE that is called continuously
 function love.draw()
-
+    physicker:draw()
 end
