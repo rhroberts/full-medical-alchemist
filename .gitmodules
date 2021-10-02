@@ -1,12 +1,6 @@
 [submodule "3rd/json/json.lua"]
 	path = 3rd/json/json.lua
 	url = https://github.com/rxi/json.lua.git
-[submodule "3rd/sti"]
-	path = 3rd/sti
-	url = https://github.com/karai17/Simple-Tiled-Implementation.git
-[submodule "3rd/pprint"]
-	path = 3rd/pprint
-	url = https://github.com/jagt/pprint.lua.git
-[submodule "3rd/peachy"]
-	path = 3rd/peachy
-	url = https://github.com/josh-perry/peachy.git
+[submodule "peachy"]
+	path = peachy
+	url = https://github.com/rhroberts/peachy.git
