@@ -8,14 +8,61 @@ return {
   height = 10,
   tilewidth = 240,
   tileheight = 160,
-  nextlayerid = 5,
-  nextobjectid = 21,
+  nextlayerid = 7,
+  nextobjectid = 25,
   properties = {},
   tilesets = {
     {
       name = "Background",
       firstgid = 1,
-      filename = "Background.tsx"
+      tilewidth = 240,
+      tileheight = 160,
+      spacing = 0,
+      margin = 0,
+      columns = 1,
+      image = "background.png",
+      imagewidth = 240,
+      imageheight = 160,
+      objectalignment = "unspecified",
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 240,
+        height = 160
+      },
+      properties = {},
+      wangsets = {},
+      tilecount = 1,
+      tiles = {}
+    },
+    {
+      name = "bed",
+      firstgid = 2,
+      tilewidth = 16,
+      tileheight = 28,
+      spacing = 0,
+      margin = 0,
+      columns = 6,
+      image = "../sprites/bed.png",
+      imagewidth = 96,
+      imageheight = 28,
+      objectalignment = "unspecified",
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 16,
+        height = 28
+      },
+      properties = {},
+      wangsets = {},
+      tilecount = 6,
+      tiles = {}
     }
   },
   layers = {
@@ -26,7 +73,7 @@ return {
       width = 10,
       height = 10,
       id = 1,
-      name = "Tile Layer 1",
+      name = "Background",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -46,6 +93,77 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 6,
+      name = "Beds",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 21,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1175.25,
+          y = 679.5,
+          width = 16,
+          height = 28,
+          rotation = 0,
+          gid = 2,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 22,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1173.25,
+          y = 787,
+          width = 16,
+          height = 28,
+          rotation = 0,
+          gid = 2,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 23,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 968,
+          y = 752,
+          width = 16,
+          height = 28,
+          rotation = 0,
+          gid = 4,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 24,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 968.333,
+          y = 791,
+          width = 16,
+          height = 28,
+          rotation = 0,
+          gid = 6,
+          visible = true,
+          properties = {}
+        }
       }
     },
     {

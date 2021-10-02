@@ -1,0 +1,168 @@
+{ "frames": [
+   {
+    "filename": "frog 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 1.aseprite",
+    "frame": { "x": 20, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 2.aseprite",
+    "frame": { "x": 40, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 3.aseprite",
+    "frame": { "x": 60, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 4.aseprite",
+    "frame": { "x": 80, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 5.aseprite",
+    "frame": { "x": 100, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 6.aseprite",
+    "frame": { "x": 120, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 7.aseprite",
+    "frame": { "x": 140, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 8.aseprite",
+    "frame": { "x": 160, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 9.aseprite",
+    "frame": { "x": 180, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 10.aseprite",
+    "frame": { "x": 200, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 11.aseprite",
+    "frame": { "x": 220, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 12.aseprite",
+    "frame": { "x": 240, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 13.aseprite",
+    "frame": { "x": 260, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 14.aseprite",
+    "frame": { "x": 280, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   },
+   {
+    "filename": "frog 15.aseprite",
+    "frame": { "x": 300, "y": 0, "w": 20, "h": 8 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 20, "h": 8 },
+    "sourceSize": { "w": 20, "h": 8 },
+    "duration": 300
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.29-x64",
+  "image": "frog.png",
+  "format": "RGBA8888",
+  "size": { "w": 320, "h": 8 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle_Fwd", "from": 0, "to": 1, "direction": "forward" },
+   { "name": "Walk_Fwd", "from": 2, "to": 3, "direction": "forward" },
+   { "name": "Idle_Bwd", "from": 4, "to": 5, "direction": "forward" },
+   { "name": "Walk_Bwd", "from": 6, "to": 7, "direction": "forward" },
+   { "name": "Idle_Side", "from": 8, "to": 13, "direction": "forward" },
+   { "name": "Walk_Side", "from": 14, "to": 15, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "frog", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
