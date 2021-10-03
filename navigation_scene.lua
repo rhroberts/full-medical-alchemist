@@ -3,6 +3,7 @@ Scene = require "scene"
 local sti = require "3rd/sti/sti"
 local physicker = require"physicker"
 local frog = require"frog"
+local textbox = require"textbox"
 
 local nav_scene = Scene:new("navigation")
 
@@ -16,6 +17,8 @@ function nav_scene:load()
 
     physicker:load()
     frog:load()
+    Greeting = textbox("move around, bro")
+    Greeting:load()
 end
 
 function nav_scene:update(dt)
@@ -29,6 +32,7 @@ function nav_scene:draw()
     -- Map:box2d_draw(0, 0, 3, 3)
     physicker:draw()
     frog:draw()
+    Greeting.draw()
 end
 
 function BeginContact(a, b, collision)
