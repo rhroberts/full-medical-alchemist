@@ -29,12 +29,13 @@ function nav_scene:update(dt)
     frog:update(dt)
 end
 
-function nav_scene:draw()
-    Map:draw(0, 0, 3, 3)
-    -- Map:box2d_draw(0, 0, 3, 3)
+function nav_scene:draw(sx, sy)
+    love.graphics.push()
+    love.graphics.scale(sx, sy)
+    Map:draw(0, 0, sx, sy)
     physicker:draw()
     frog:draw()
-    Greeting.draw()
+    love.graphics.pop()
 end
 
 function BeginContact(a, b, collision)

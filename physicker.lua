@@ -34,13 +34,10 @@ function physicker:load()
 end
 
 function physicker:draw()
-    love.graphics.push()
-	love.graphics.scale(3, 3)
     self.animation[self.animationName]:draw(
         self.x + self.xShift - self.width / 2, self.y - self.height / 2,
         0, self.xDir, 1
     )
-    love.graphics.pop()
 end
 
 function physicker:update(dt)

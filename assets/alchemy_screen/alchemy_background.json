@@ -1,5 +1,6 @@
-{ "frames": {
-   "alchemy_background 0.aseprite": {
+{ "frames": [
+   {
+    "filename": "alchemy_background 0.aseprite",
     "frame": { "x": 0, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -7,7 +8,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 1.aseprite": {
+   {
+    "filename": "alchemy_background 1.aseprite",
     "frame": { "x": 240, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -15,7 +17,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 2.aseprite": {
+   {
+    "filename": "alchemy_background 2.aseprite",
     "frame": { "x": 480, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -23,7 +26,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 3.aseprite": {
+   {
+    "filename": "alchemy_background 3.aseprite",
     "frame": { "x": 720, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -31,7 +35,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 4.aseprite": {
+   {
+    "filename": "alchemy_background 4.aseprite",
     "frame": { "x": 960, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -39,7 +44,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 5.aseprite": {
+   {
+    "filename": "alchemy_background 5.aseprite",
     "frame": { "x": 1200, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -47,7 +53,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 6.aseprite": {
+   {
+    "filename": "alchemy_background 6.aseprite",
     "frame": { "x": 1440, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -55,7 +62,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 7.aseprite": {
+   {
+    "filename": "alchemy_background 7.aseprite",
     "frame": { "x": 1680, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -63,7 +71,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 8.aseprite": {
+   {
+    "filename": "alchemy_background 8.aseprite",
     "frame": { "x": 1920, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -71,7 +80,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 9.aseprite": {
+   {
+    "filename": "alchemy_background 9.aseprite",
     "frame": { "x": 2160, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -79,7 +89,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 10.aseprite": {
+   {
+    "filename": "alchemy_background 10.aseprite",
     "frame": { "x": 2400, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -87,7 +98,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 11.aseprite": {
+   {
+    "filename": "alchemy_background 11.aseprite",
     "frame": { "x": 2640, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -95,7 +107,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 12.aseprite": {
+   {
+    "filename": "alchemy_background 12.aseprite",
     "frame": { "x": 2880, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -103,7 +116,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 13.aseprite": {
+   {
+    "filename": "alchemy_background 13.aseprite",
     "frame": { "x": 3120, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -111,7 +125,8 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    },
-   "alchemy_background 14.aseprite": {
+   {
+    "filename": "alchemy_background 14.aseprite",
     "frame": { "x": 3360, "y": 0, "w": 240, "h": 160 },
     "rotated": false,
     "trimmed": false,
@@ -119,7 +134,7 @@
     "sourceSize": { "w": 240, "h": 160 },
     "duration": 100
    }
- },
+ ],
  "meta": {
   "app": "http://www.aseprite.org/",
   "version": "1.2.29-x64",
@@ -128,6 +143,7 @@
   "size": { "w": 3600, "h": 160 },
   "scale": "1",
   "frameTags": [
+   { "name": "Idle", "from": 0, "to": 14, "direction": "forward" }
   ],
   "layers": [
    { "name": "table", "opacity": 255, "blendMode": "normal" },
