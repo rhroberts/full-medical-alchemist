@@ -27,9 +27,6 @@ function love.load()
 
     physicker:load()
     frog:load()
-
-    
-    
 end
 
 -- A primary callback of LÖVE that is called continuously
