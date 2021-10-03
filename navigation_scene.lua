@@ -5,9 +5,9 @@ local physicker = require"physicker"
 local frog = require"frog"
 local textbox = require"textbox"
 
-local nav_scene = Scene:new("navigation")
+local navigation_scene = Scene:new("navigation")
 
-function nav_scene:load() 
+function navigation_scene:load() 
     -- Load map file
     Map = sti("assets/map/map_test.lua", {"box2d"})
     World = love.physics.newWorld(0, 0)
@@ -23,14 +23,16 @@ function nav_scene:load()
     Greeting.load()
 end
 
-function nav_scene:update(dt)
+function navigation_scene:update(dt, gamestate)
     World:update(dt)
     physicker:update(dt)
     frog:update(dt)
-    Greeting.update(dt)
+    if love.keyboard.isDown("e") then
+        gamestate:setAlchemyScene()
+    end
 end
 
-function nav_scene:draw(sx, sy)
+function navigation_scene:draw(sx, sy)
     love.graphics.push()
     love.graphics.scale(sx, sy)
     Map:draw(0, 0, sx, sy)
@@ -50,4 +52,4 @@ function EndContact(a, b, collision)
     frog:endContact(a, b, collision)
 end
 
-return nav_scene
+return navigation_scene
