@@ -11,7 +11,7 @@ local physicker = {
     vel = 50,  -- default velocity to apply to xVel or yVel
     animationName = "idle_fwd",
     xShift = 0,  -- so turning around doesn't look jumpy
-    unbounded = false,
+    colliding = false,
     xDirection = 1,
     spritesheet = love.graphics.newImage("assets/sprites/patients/patient_1.png"),
     asepriteMeta = "assets/sprites/patients/patient_1.json"
@@ -100,32 +100,34 @@ function physicker:move(dt)
 end
 
 function physicker:beginContact(a, b, collision)
-    if self.unbounded == true then return end
+    if self.colliding == true then return end
     local nx, ny = collision:getNormal()
     if a == self.physics.fixture then
-        if math.abs(nx) > 0 or math.abs(ny) then
-            print("bang a!")
+        if nx ~= 0 or ny ~= 0 then
+            print("foo")
             self:collide(collision)
+            self.colliding = true
         end
     elseif b == self.physics.fixture then
-        if math.abs(nx) > 0 or math.abs(ny) > 0 then
-            print("bang b!")
+        if nx ~= 0 or ny ~= 0 then
             self:collide(collision)
+            self.colliding = true
+            print("bar")
         end
     end
 end
 
 function physicker:endContact(a, b, collision)
     if a == self.physics.fixture or b == self.physics.fixture then
-        if self.currentYCollision == collision then
-            self.unbounded = false
+        if self.currentCollision == collision then
+            self.colliding = false
         end
     end
 end
 
 function physicker:collide(collision)
-    self.currentYCollision = collision
-    self.unbounded = true
+    self.currentCollision = collision
+    self.colliding = false
 end
 
 return physicker
