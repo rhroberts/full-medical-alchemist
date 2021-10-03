@@ -1,4 +1,72 @@
 {
+    "hawthorn": {
+        "name": "Hawthorn",
+        "description": "A handful of medicinal hawthorn",
+        "relative_sprite_path": "assets/sprites/ingredients/hawthorne.png",
+        "relative_metadata_path": "assets/sprites/ingredients/hawthorne.json",
+        "base_properties": {
+            "blood": 9,
+            "yellow_bile": 4,
+            "black_bile": 0,
+            "phlegm": -4
+        },
+        "concoction_propensities": {
+            "salve": 0,
+            "potion": 0,
+            "tincture": 1
+        }
+    },
+    "harpy talon": {
+        "name": "Harpy Talon",
+        "description": "Several talons from a harpy",
+        "relative_sprite_path": "assets/sprites/ingredients/harpy_talon.png",
+        "relative_metadata_path": "assets/sprites/ingredients/harpy_talon.json",
+        "base_properties": {
+            "blood": 10,
+            "yellow_bile": 0,
+            "black_bile": -5,
+            "phlegm": 4
+        },
+        "concoction_propensities": {
+            "salve": 0,
+            "potion": 0,
+            "tincture": 1
+        }
+    },
+    "saltpeter": {
+        "name": "Saltpeter",
+        "description": "A smile pile of a combustible powder",
+        "relative_sprite_path": "assets/sprites/ingredients/saltpeter.png",
+        "relative_metadata_path": "assets/sprites/ingredients/saltpeter.json",
+        "base_properties": {
+            "blood": -2,
+            "yellow_bile": 8,
+            "black_bile": 5,
+            "phlegm": 4
+        },
+        "concoction_propensities": {
+            "salve": 0,
+            "potion": 0,
+            "tincture": 1
+        }
+    },
+    "fire moss": {
+        "name": "Fire Moss",
+        "description": "Clippings from rare and reactive moss",
+        "relative_sprite_path": "assets/sprites/ingredients/fire_moss.png",
+        "relative_metadata_path": "assets/sprites/ingredients/fire_moss.json",
+        "base_properties": {
+            "blood": -1,
+            "yellow_bile": 10,
+            "black_bile": 7,
+            "phlegm": 0
+        },
+        "concoction_propensities": {
+            "salve": 0,
+            "potion": 0,
+            "tincture": 1
+        }
+    },
     "lavender": {
         "name": "lavender",
         "description": "Beautiful boughs of purple lavender",
@@ -14,23 +82,6 @@
             "salve": 1,
             "potion": 0,
             "tincture": 0
-        }
-    },
-    "hawthorn": {
-        "name": "hawthorn",
-        "description": "A handful of medicinal hawthorn",
-        "relative_sprite_path": "assets/sprites/ingredients/hawthorne.png",
-        "relative_metadata_path": "assets/sprites/ingredients/hawthorne.json",
-        "base_properties": {
-            "blood": 9,
-            "yellow_bile": 4,
-            "black_bile": 0,
-            "phlegm": -4
-        },
-        "concoction_propensities": {
-            "salve": 0,
-            "potion": 0,
-            "tincture": 1
         }
     },
     "blisterwort": {
@@ -50,16 +101,33 @@
             "tincture": 0
         }
     },
-    "harpy talon": {
-        "name": "harpy talon",
-        "description": "Several talons from a harpy",
-        "relative_sprite_path": "assets/sprites/ingredients/harpy_talon.png",
-        "relative_metadata_path": "assets/sprites/ingredients/harpy_talon.json",
+    "fish eyes": {
+        "name": "Fish Eyes",
+        "description": "A small globule of eyes from assorted fishes",
+        "relative_sprite_path": "assets/sprites/ingredients/fish_eyes.png",
+        "relative_metadata_path": "assets/sprites/ingredients/fish_eyes.json",
+        "base_properties": {
+            "blood": 7,
+            "yellow_bile": -2,
+            "black_bile": 3,
+            "phlegm": 9
+        },
+        "concoction_propensities": {
+            "salve": 0,
+            "potion": 0,
+            "tincture": 1
+        }
+    },
+    "spider ichor": {
+        "name": "Spider Ichor",
+        "description": "Liquid drippings from a large spider",
+        "relative_sprite_path": "assets/sprites/ingredients/ichor.png",
+        "relative_metadata_path": "assets/sprites/ingredients/ichor.json",
         "base_properties": {
             "blood": 10,
-            "yellow_bile": 0,
+            "yellow_bile": -1,
             "black_bile": -5,
-            "phlegm": 4
+            "phlegm": 9
         },
         "concoction_propensities": {
             "salve": 0,
