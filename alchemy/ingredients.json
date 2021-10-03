@@ -5,15 +5,66 @@
         "relative_sprite_path": "assets/sprites/ingredients/lavender.png",
         "relative_metadata_path": "assets/sprites/ingredients/lavender.json",
         "base_properties": {
-            "blood": 10,
+            "blood": 0,
             "yellow_bile": -4,
-            "black_bile": 0,
+            "black_bile": 10,
             "phlegm": 3
         },
         "concoction_propensities": {
             "salve": 1,
             "potion": 0,
             "tincture": 0
+        }
+    },
+    "hawthorn": {
+        "name": "hawthorn",
+        "description": "A handful of medicinal hawthorn",
+        "relative_sprite_path": "assets/sprites/ingredients/hawthorne.png",
+        "relative_metadata_path": "assets/sprites/ingredients/hawthorne.json",
+        "base_properties": {
+            "blood": 9,
+            "yellow_bile": 4,
+            "black_bile": 0,
+            "phlegm": -4
+        },
+        "concoction_propensities": {
+            "salve": 0,
+            "potion": 0,
+            "tincture": 1
+        }
+    },
+    "blisterwort": {
+        "name": "blisterwort",
+        "description": "A couple stalks of blisterwort, cap to root",
+        "relative_sprite_path": "assets/sprites/ingredients/blisterwort.png",
+        "relative_metadata_path": "assets/sprites/ingredients/blisterwort.json",
+        "base_properties": {
+            "blood": -3,
+            "yellow_bile": -2,
+            "black_bile": 9,
+            "phlegm": 5
+        },
+        "concoction_propensities": {
+            "salve": 0,
+            "potion": 1,
+            "tincture": 0
+        }
+    },
+    "harpy talon": {
+        "name": "harpy talon",
+        "description": "Several talons from a harpy",
+        "relative_sprite_path": "assets/sprites/ingredients/harpy_talon.png",
+        "relative_metadata_path": "assets/sprites/ingredients/harpy_talon.json",
+        "base_properties": {
+            "blood": 10,
+            "yellow_bile": 0,
+            "black_bile": -5,
+            "phlegm": 4
+        },
+        "concoction_propensities": {
+            "salve": 0,
+            "potion": 0,
+            "tincture": 1
         }
     }
 }

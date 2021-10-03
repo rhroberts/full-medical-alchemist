@@ -1,4 +1,5 @@
-json = require("../3rd/json/json")
+local json = require("../3rd/json/json")
+local peachy = require("../3rd/peachy/peachy")
 
 local Alchemy = {}
 local AlchemicalIngredient = {}
@@ -6,7 +7,7 @@ local AlchemicalConcoction = {
     shader = love.graphics.newShader("alchemy/humor.frag")
 }
 
-function Alchemy:load() 
+function Alchemy:load()
     self.ingredients = self.load_ingredients()
     self.concoctions = self.load_concoctions()
 end
@@ -21,7 +22,9 @@ function Alchemy:load_ingredients()
 
     -- iterate through table and read in assets, set draw prototype
     for k, v in pairs(ingredients) do
-        ingredients[k].sprite = love.graphics.newImage(v.relative_sprite_path)
+        local spritesheet = love.graphics.newImage(v.relative_sprite_path)
+        local aseprite_meta = v.relative_metadata_path
+        ingredients[k].sprite = peachy.new(aseprite_meta, spritesheet, "Idle")
         setmetatable(ingredients[k], {__index = AlchemicalIngredient})
     end
 
@@ -37,8 +40,15 @@ function Alchemy:load_concoctions()
 
 
     for k, v in pairs(concoctions) do
-        concoctions[k].sprite = love.graphics.newImage(v.relative_sprite_path)
-        concoctions[k].sprite_mask = love.graphics.newImage(v.relative_mask_texture_path)
+        local spritesheet = love.graphics.newImage(v.relative_sprite_path)
+        local aseprite_meta = v.relative_sprite_metadata_path
+        concoctions[k].sprite = peachy.new(aseprite_meta, spritesheet, "Idle")
+        local spritesheet = love.graphics.newImage(v.relative_mask_texture_path)
+        local aseprite_meta = v.relative_mask_texture_metadata_path
+        print(k)
+        print(spritesheet)
+        print(aseprite_meta)
+        concoctions[k].sprite_mask = peachy.new(aseprite_meta, spritesheet, "Idle")
         setmetatable(concoctions[k], {__index = AlchemicalConcoction})
     end
 
