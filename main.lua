@@ -4,6 +4,7 @@
 -- In New York City, the dedicated detectives who investigate these vicious felonies are members 
 -- of an elite squad known as the Special Victims Unit. 
 -- These are their stories.
+love.graphics.setDefaultFilter("nearest", "nearest")
 
 -- Load Modules / Libraries
 local physicker = require"physicker"
@@ -31,13 +32,17 @@ end
 function love.update(dt)
     physicker:update(dt)
     frog:update(dt)
+    lavender:update(dt)
 end
 
 -- A primary callback of LÖVE that is called continuously
 function love.draw()
+    love.graphics.push()
+    love.graphics.scale(3, 3)
     physicker:draw()
     frog:draw()
 
     lavender:draw(50, 10)
     salve:draw(50, 30)
+    love.graphics.pop()
 end

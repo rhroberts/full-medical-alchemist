@@ -45,9 +45,6 @@ function Alchemy:load_concoctions()
         concoctions[k].sprite = peachy.new(aseprite_meta, spritesheet, "Idle")
         local spritesheet = love.graphics.newImage(v.relative_mask_texture_path)
         local aseprite_meta = v.relative_mask_texture_metadata_path
-        print(k)
-        print(spritesheet)
-        print(aseprite_meta)
         concoctions[k].sprite_mask = peachy.new(aseprite_meta, spritesheet, "Idle")
         setmetatable(concoctions[k], {__index = AlchemicalConcoction})
     end
@@ -75,16 +72,26 @@ function Alchemy:get_concoction(name, properties)
     return new
 end
 
+function Alchemy:update(dt)
+    AlchemicalIngredient:update(dt)
+end
+
 
 function AlchemicalIngredient:draw(x, y)
-    love.graphics.draw(self.sprite, x, y)
+    self.sprite:draw(x, y)
+    -- love.graphics.draw(self.sprite, x, y)
+end
+
+function AlchemicalIngredient:update(dt)
+    self.sprite:update(dt)
 end
 
 
 function AlchemicalConcoction:draw(x, y)
     love.graphics.setShader(self.shader)
     self.shader:send("blood", self.base_properties.blood)
-    love.graphics.draw(self.sprite, x, y)
+    self.sprite:draw(x, y)
+    -- love.graphics.draw(self.sprite, x, y)
     love.graphics.setShader() -- unset?
 end
 
