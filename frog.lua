@@ -7,8 +7,9 @@ local frog = {
     spawn = false,
     x = 50,
     y = 50,
-    xVel = 50,
-    yVel = 50,
+    xVel = 0,
+    yVel = 0,
+    vel = 50,
     anim = "idle_fwd",
 }
 local keypress = "d"
@@ -31,14 +32,20 @@ function frog:load()
         idle_side = peachy.new(aseprite_meta, spritesheet, "Idle_Side"),
         walk_side = peachy.new(aseprite_meta, spritesheet, "Walk_Side"),
     }
+    width = self.animation["idle_fwd"]:getWidth()
+    height = self.animation["idle_fwd"]:getHeight()
     math.randomseed(os.time())
+    self.physics = {}
+    self.physics.body = love.physics.newBody(World, self.x, self.y, "dynamic")
+    self.physics.shape = love.physics.newRectangleShape(width, height)
+    self.physics.fixture = love.physics.newFixture(self.physics.body, self.physics.shape)
 end
 
 function frog:draw()
     if self.spawn then
         love.graphics.push()
         love.graphics.scale(3, 3)
-        self.animation[self.anim]:draw(self.x+xshift, self.y, 0, xdir, 1)
+        self.animation[self.anim]:draw(self.x+xshift-width/2, self.y-height/2, 0, xdir, 1)
         love.graphics.pop()
     end
     love.graphics.print("Duration: ", 400, 25)
@@ -49,6 +56,11 @@ function frog:draw()
 	love.graphics.print(tostring(action), 500, 75)
 end
 
+function frog:syncPhysics()
+	self.x, self.y = self.physics.body:getPosition()
+	self.physics.body:setLinearVelocity(self.xVel, self.yVel)
+end
+
 function frog:update(dt)
     -- Spawn the frog
     if love.keyboard.isDown("y") then
@@ -56,6 +68,7 @@ function frog:update(dt)
     end
     -- Process time accumulation
     if self.spawn then
+        self:syncPhysics()
         accumulator = accumulator + dt
         if accumulator > duration then
             direction = math.random(4)
@@ -73,16 +86,19 @@ function frog:move(dt)
     local dir = directions[direction]
     -- Set upward animations
     if dir == "w" and action then
-        self.y = self.y - self.yVel * dt
+        self.yVel = -self.vel
+        -- self.y = self.y - self.yVel * dt
         self.anim = "walk_bwd"
         keypress = "w"
     -- Set downward animations
     elseif dir == "s" and action then
-        self.y = self.y + self.yVel * dt
+        self.yVel = self.vel
+        -- self.y = self.y + self.yVel * dt
         self.anim = "walk_fwd"
         keypress = "s"
     -- Set idle animations
     else
+        self.yVel = 0
         if self.anim == "walk_fwd" then
             self.anim = "idle_fwd"
         elseif self.anim == "walk_bwd" then
@@ -91,25 +107,55 @@ function frog:move(dt)
     end
     -- Set left animations
     if dir == "a" and action then
-        self.x = self.x - self.xVel * dt
+        self.xVel = -self.vel
+        -- self.x = self.x - self.xVel * dt
         self.anim = "walk_side"
         keypress = "a"
         xdir = -1
         xshift = self.animation[self.anim]:getWidth()
     -- Set right animations
     elseif dir == "d" and action then
-        self.x = self.x + self.xVel * dt
+        self.xVel = self.vel
+        -- self.x = self.x + self.xVel * dt
         self.anim = "walk_side"
         keypress = "d"
         xdir = 1
         xshift = 0
     -- Set idle animations
     else
+        self.xVel = 0
         if self.anim == "walk_side" then
             self.anim = "idle_side"
         end
     end
     
+end
+
+function frog:beginContact(a, b, collision)
+    if self.ygrounded == true then return end
+    local nx, ny = collision:getNormal()
+    if a == self.physics.fixture then
+        if ny > 0 then
+            self:land(collision)
+        end
+    elseif b == self.physics.fixture then
+        if ny < 0 then
+            self:land(collision)
+        end
+    end
+end
+
+function frog:endContact(a, b, collision)
+    if a == self.physics.fixture or b == self.physics.fixture then
+        if self.currentYCollision == collision then
+            self.ygrounded = false
+        end
+    end
+end
+
+function frog:land(collision)
+    self.currentYCollision = collision
+    self.ygrounded = true
 end
 
 return frog

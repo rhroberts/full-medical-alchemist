@@ -1,0 +1,87 @@
+{ "frames": [
+   {
+    "filename": "bed 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 16, "h": 28 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 28 },
+    "sourceSize": { "w": 16, "h": 28 },
+    "duration": 100
+   },
+   {
+    "filename": "bed 1.aseprite",
+    "frame": { "x": 16, "y": 0, "w": 16, "h": 28 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 28 },
+    "sourceSize": { "w": 16, "h": 28 },
+    "duration": 100
+   },
+   {
+    "filename": "bed 2.aseprite",
+    "frame": { "x": 32, "y": 0, "w": 16, "h": 28 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 28 },
+    "sourceSize": { "w": 16, "h": 28 },
+    "duration": 100
+   },
+   {
+    "filename": "bed 3.aseprite",
+    "frame": { "x": 48, "y": 0, "w": 16, "h": 28 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 28 },
+    "sourceSize": { "w": 16, "h": 28 },
+    "duration": 100
+   },
+   {
+    "filename": "bed 4.aseprite",
+    "frame": { "x": 64, "y": 0, "w": 16, "h": 28 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 28 },
+    "sourceSize": { "w": 16, "h": 28 },
+    "duration": 100
+   },
+   {
+    "filename": "bed 5.aseprite",
+    "frame": { "x": 80, "y": 0, "w": 16, "h": 28 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 28 },
+    "sourceSize": { "w": 16, "h": 28 },
+    "duration": 100
+   },
+   {
+    "filename": "bed 6.aseprite",
+    "frame": { "x": 96, "y": 0, "w": 3, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 3 },
+    "sourceSize": { "w": 16, "h": 28 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.29-x64",
+  "image": "bed.png",
+  "format": "RGBA8888",
+  "size": { "w": 99, "h": 28 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Blue_Unoccupied", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "Blue_Occupied", "from": 1, "to": 1, "direction": "forward" },
+   { "name": "Red_Unoccupied", "from": 2, "to": 2, "direction": "forward" },
+   { "name": "Red_Occupied", "from": 3, "to": 3, "direction": "forward" },
+   { "name": "Green_Unoccupied", "from": 4, "to": 4, "direction": "forward" },
+   { "name": "Green_Occupied", "from": 5, "to": 6, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Bed", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
