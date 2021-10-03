@@ -9,7 +9,7 @@ return {
   tilewidth = 1,
   tileheight = 1,
   nextlayerid = 3,
-  nextobjectid = 19,
+  nextobjectid = 43,
   properties = {},
   tilesets = {
     {
@@ -47,7 +47,7 @@ return {
       width = 240,
       height = 160,
       id = 1,
-      name = "Tile Layer 1",
+      name = "Background",
       visible = true,
       opacity = 1,
       offsetx = 0,
