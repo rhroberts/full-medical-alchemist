@@ -94,7 +94,7 @@ local function textBox(text, font, fontSize, fontColor, sound)
     end
 
     function love.keypressed(key)
-        if key == "e" then
+        if key == "p" then
             nextPage()
         end
     end
