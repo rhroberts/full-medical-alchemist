@@ -12,7 +12,16 @@ local function textBox(text, font, fontSize, fontColor, sound)
 
     local function numPages(_text, _fontSize, _boxWidth)
         -- figure out how many pages the text needs to fit
-        return(math.ceil(_fontSize * string.len(_text) / _boxWidth) / GlobalScale)
+        return(math.ceil(_fontSize * string.len(_text) / _boxWidth / GlobalScale))
+    end
+
+    local function sliceTextToPage(_text, _page, _charsPerPage)
+        return(
+            _text:sub(
+                (_page - 1) * _charsPerPage,
+                _page * _charsPerPage
+            )
+        )
     end
 
     if not text then
@@ -31,6 +40,7 @@ local function textBox(text, font, fontSize, fontColor, sound)
         boxWidth = bwidth,  -- textbox width
         fontSize = fontSize or 24,
         color = fontColor or {0, 0, 0},
+        charsPerPage = bwidth * (fontSize or 24),
         -- totalPages = ...
     }
 
@@ -56,12 +66,15 @@ local function textBox(text, font, fontSize, fontColor, sound)
         -- love.graphics.rectangle("fill", x, y, attrs.boxWidth, 50, 5, 5)
         love.graphics.draw(assets.img, x, y)
         love.graphics.printf(
-            {attrs.color, assets.text}, assets.font, x, y, attrs.boxWidth, "center"
+            {attrs.color, sliceTextToPage(assets.text, state.page, attrs.charsPerPage)},
+            assets.font, x, y, attrs.boxWidth, "center"
         )
     end
 
-    local function drawPage()
-        local pageText = assets.text:sub()
+    local function nextPage()
+        if state.page < attrs.totalPages then
+            state.page = state.page + 1
+        end
     end
 
     local function updateTextBox(dt)
