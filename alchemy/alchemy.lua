@@ -4,7 +4,8 @@ local peachy = require("../3rd/peachy/peachy")
 local Alchemy = {}
 local AlchemicalIngredient = {}
 local AlchemicalConcoction = {
-    shader = love.graphics.newShader("alchemy/humor.frag")
+    shader = love.graphics.newShader("alchemy/humor.frag"),
+    circle_mask = love.graphics.newImage("assets/sprites/circle_mask.png")
 }
 
 function Alchemy:load()
@@ -38,7 +39,6 @@ function Alchemy:load_concoctions()
 
     local concoctions = json.decode(concoctions_json)
 
-
     for k, v in pairs(concoctions) do
         local spritesheet = love.graphics.newImage(v.relative_sprite_path)
         local aseprite_meta = v.relative_sprite_metadata_path
@@ -69,6 +69,7 @@ function Alchemy:get_concoction(name, properties)
         black_bile = properties.black_bile,
         phlegm = properties.phlegm
     }
+    new.time = 0
     return new
 end
 
@@ -88,8 +89,12 @@ end
 
 
 function AlchemicalConcoction:draw(x, y)
+    self.time = self.time + 1
+
     love.graphics.setShader(self.shader)
-    self.shader:send("blood", self.base_properties.blood)
+    -- self.shader:send("blood", self.base_properties.blood)
+    -- self.shader:send("u_time", self.time);
+    self.shader:send("maskTexture", self.circle_mask)
     self.sprite:draw(x, y)
     -- love.graphics.draw(self.sprite, x, y)
     love.graphics.setShader() -- unset?

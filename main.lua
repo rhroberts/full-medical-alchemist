@@ -33,6 +33,7 @@ function love.update(dt)
     physicker:update(dt)
     frog:update(dt)
     lavender:update(dt)
+    -- salve:update(dt)
 end
 
 -- A primary callback of LÖVE that is called continuously

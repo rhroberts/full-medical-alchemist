@@ -4,7 +4,11 @@ uniform float yellow_bile;
 uniform float black_bile;
 uniform float phlegm;
 
-#define BLOOD_COLOR vec4(1, 0, 0, 0.5)
+uniform float u_time;
+
+uniform Image maskTexture;
+
+#define BLOOD_COLOR vec3(1, 0, 0)
 
 #define PROPERTY_SCALE 10
 
@@ -14,16 +18,22 @@ float rand(vec2 c){
 
 vec4 effect(vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords)
 {
-    // sample the texture for this fragment
     vec4 textureColor = Texel(tex, texture_coords);
-    // vec4 normalColor = Texel(normals, texture_coords);
+    vec4 mask = Texel(maskTexture, texture_coords);
 
-    // light.direction - normal
+    vec2 ipos = floor(texture_coords * 10);
+    vec2 fpos = fract(texture_coords * 10);
 
-    // return vec4(1, 0, 0, textureColor.a / 2) * color;
+    vec3 outColor = BLOOD_COLOR * vec3(rand(ipos)) * mask.rgb;
 
-    // vec4 modulatedColor =  mix(BLOOD_COLOR * min(blood, PROPERTY_SCALE) / PROPERTY_SCALE;
+    return textureColor + (vec4(BLOOD_COLOR, 1.0) * mask);
+    // return vec4(outColor, sin(fpos * u_time / 10));
 
-    return normalize(textureColor + normalize(BLOOD_COLOR * min(blood, PROPERTY_SCALE) / PROPERTY_SCALE));
+
+    // vec4 highlight = mask * BLOOD_COLOR * min(blood, PROPERTY_SCALE) / PROPERTY_SCALE
+
+    // return normalize(textureColor + normalize(highlight));
     // return normalize(mix(textureColor, BLOOD_COLOR, min(blood, PROPERTY_SCALE) / PROPERTY_SCALE));
+
+
 }
