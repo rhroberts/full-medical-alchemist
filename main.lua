@@ -12,21 +12,30 @@ WindowWidth = love.graphics.getWidth()
 WindowHeight = love.graphics.getHeight()
 
 -- Define Local Parameters Here
-local nav_scene = require"navigation_scene"
+local navigation_scene = require"navigation_scene"
 local alchemy_scene = require"alchemy_scene"
 
 -- levels or scenes in our game.
 local GameState = {
-    current = nav_scene,
+    current = navigation_scene,
     scenes = {
-        nav_scene,
-        alchemy_scene
+        navigation_scene = navigation_scene,
+        alchemy_scene = alchemy_scene
     },
     sx = 3,
     sy = 3
-
-    -- TODO: callbacks for setting other scenes
 }
+
+-- hooks for updating state. free to call from within
+-- a scene.
+
+function GameState:setNavigationScene()
+    self.current = self.scenes.navigation_scene
+end
+
+function GameState:setAlchemyScene()
+    self.current = self.scenes.alchemy_scene
+end
 
 -- A primary callback of LÖVE that is called only once
 function love.load()
@@ -38,10 +47,11 @@ end
 
 -- A primary callback of LÖVE that is called continuously
 function love.update(dt)
-    GameState.current:update(dt)
+    GameState.current:update(dt, GameState)
 end
 
 -- A primary callback of LÖVE that is called continuously
 function love.draw()
+    -- print(GameState.current.name)
     GameState.current:draw(GameState.sx, GameState.sy)
 end

@@ -11,8 +11,12 @@ function alchemy_scene:load()
 end
 
 
-function alchemy_scene:update(dt)
+function alchemy_scene:update(dt, gamestate)
     self.background_animation:update(dt)
+
+    if love.keyboard.isDown("q") then
+        gamestate:setNavigationScene()
+    end
 end
 
 function alchemy_scene:draw(sx, sy)
