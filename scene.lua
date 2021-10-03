@@ -12,18 +12,16 @@ function Scene:new(name)
     return new
 end
 
-function Scene:draw()
-    assert(false, "A Scene must implement draw")
-end
-
-
 function Scene:load()
     assert(false, "A Scene must implement load")
 end
 
-function Scene:update()
-    assert(false, "A Scene must implement update")
+function Scene:draw()
+    assert(false, "A Scene must implement draw, accepting scaling parameters sx, sy")
+end
 
+function Scene:update()
+    assert(false, "A Scene must implement update, accepting dt and a gamestate table.")
 end
 
 return Scene
