@@ -20,13 +20,14 @@ function nav_scene:load()
     Greeting = textbox(
         "Move around, bro! Work the room. Explore this beautiful world."
     )
-    Greeting:load()
+    Greeting.load()
 end
 
 function nav_scene:update(dt)
     World:update(dt)
     physicker:update(dt)
     frog:update(dt)
+    Greeting.update(dt)
 end
 
 function nav_scene:draw(sx, sy)
@@ -36,6 +37,7 @@ function nav_scene:draw(sx, sy)
     physicker:draw()
     frog:draw()
     love.graphics.pop()
+    Greeting.draw()
 end
 
 function BeginContact(a, b, collision)
