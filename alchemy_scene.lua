@@ -12,7 +12,6 @@ end
 
 
 function alchemy_scene:update(dt)
-    -- noop
     self.background_animation:update(dt)
 end
 
