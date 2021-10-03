@@ -1,5 +1,4 @@
 -- a module for interactive textboxes!
-
 local function textBox(text, font, fontSize, fontColor, sound)
     -- text is a string
     -- fontSize is a number (pixels)
@@ -9,6 +8,7 @@ local function textBox(text, font, fontSize, fontColor, sound)
 
     local bwidth, bheight = 150, 50
     local windowWidth, windowHeight = love.graphics.getWidth(), love.graphics.getHeight()
+    local imgPath = "assets/ui/player_textbox.png"
 
     local function numPages(_text, _fontSize, _boxWidth)
         -- figure out how many pages the text needs to fit
@@ -18,7 +18,6 @@ local function textBox(text, font, fontSize, fontColor, sound)
     if not text then
         error("You need to provide text for the textbox!")
     end
-
 
     -- keep track of state
     local state = {
@@ -38,25 +37,35 @@ local function textBox(text, font, fontSize, fontColor, sound)
     -- static assets
     local assets = {
         text = text,
-        sound = sound or nil,
-        font = font or love.graphics.newFont("assets/fonts/pixeldroidMenuRegular.ttf", attrs.fontSize)
+        -- sound
+        -- font
+        -- img
     }
 
     local function loadTextBox()
         attrs.totalPages = numPages(assets.text, attrs.fontSize, attrs.boxWidth)
-        print(attrs.totalPages)
+        assets.font = font or love.graphics.newFont(
+            "assets/fonts/pixeldroidMenuRegular.ttf", attrs.fontSize
+        )
+        assets.img = love.graphics.newImage(imgPath)
     end
 
     local function drawTextBox(x, y)
         x = x or attrs.x
         y = y or attrs.y
-        love.graphics.rectangle("fill", x, y, attrs.boxWidth, 50, 5, 5)
+        -- love.graphics.rectangle("fill", x, y, attrs.boxWidth, 50, 5, 5)
+        love.graphics.draw(assets.img, x, y)
         love.graphics.printf(
             {attrs.color, assets.text}, assets.font, x, y, attrs.boxWidth, "center"
         )
     end
 
+    local function drawPage()
+        local pageText = assets.text:sub()
+    end
+
     local function updateTextBox(dt)
+        -- not sure I'll use this
     end
 
     return {

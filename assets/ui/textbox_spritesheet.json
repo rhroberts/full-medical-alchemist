@@ -1,0 +1,98 @@
+{ "frames": [
+   {
+    "filename": "textbox_spritesheet 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 50, "h": 15 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 15 },
+    "sourceSize": { "w": 50, "h": 15 },
+    "duration": 100
+   },
+   {
+    "filename": "textbox_spritesheet 1.aseprite",
+    "frame": { "x": 50, "y": 0, "w": 50, "h": 15 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 15 },
+    "sourceSize": { "w": 50, "h": 15 },
+    "duration": 100
+   },
+   {
+    "filename": "textbox_spritesheet 2.aseprite",
+    "frame": { "x": 100, "y": 0, "w": 50, "h": 15 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 15 },
+    "sourceSize": { "w": 50, "h": 15 },
+    "duration": 100
+   },
+   {
+    "filename": "textbox_spritesheet 3.aseprite",
+    "frame": { "x": 150, "y": 0, "w": 50, "h": 15 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 15 },
+    "sourceSize": { "w": 50, "h": 15 },
+    "duration": 100
+   },
+   {
+    "filename": "textbox_spritesheet 4.aseprite",
+    "frame": { "x": 200, "y": 0, "w": 50, "h": 15 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 15 },
+    "sourceSize": { "w": 50, "h": 15 },
+    "duration": 100
+   },
+   {
+    "filename": "textbox_spritesheet 5.aseprite",
+    "frame": { "x": 250, "y": 0, "w": 50, "h": 15 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 15 },
+    "sourceSize": { "w": 50, "h": 15 },
+    "duration": 100
+   },
+   {
+    "filename": "textbox_spritesheet 6.aseprite",
+    "frame": { "x": 300, "y": 0, "w": 50, "h": 15 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 15 },
+    "sourceSize": { "w": 50, "h": 15 },
+    "duration": 100
+   },
+   {
+    "filename": "textbox_spritesheet 7.aseprite",
+    "frame": { "x": 350, "y": 0, "w": 50, "h": 15 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 15 },
+    "sourceSize": { "w": 50, "h": 15 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.29-x64",
+  "image": "textbox_spritesheet.png",
+  "format": "RGBA8888",
+  "size": { "w": 400, "h": 15 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "bottom_left", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "top_left", "from": 1, "to": 1, "direction": "forward" },
+   { "name": "bottom_right", "from": 2, "to": 2, "direction": "forward" },
+   { "name": "top_right", "from": 3, "to": 3, "direction": "forward" },
+   { "name": "left", "from": 4, "to": 4, "direction": "forward" },
+   { "name": "right", "from": 5, "to": 5, "direction": "forward" },
+   { "name": "bottom", "from": 6, "to": 6, "direction": "forward" },
+   { "name": "top", "from": 7, "to": 7, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "text_box", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

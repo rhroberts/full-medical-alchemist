@@ -17,7 +17,9 @@ function nav_scene:load()
 
     physicker:load()
     frog:load()
-    Greeting = textbox("move around, bro")
+    Greeting = textbox(
+        "Move around, bro! Work the room. Explore this beautiful world."
+    )
     Greeting:load()
 end
 
