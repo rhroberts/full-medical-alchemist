@@ -16,11 +16,6 @@ local function textBox(text, font, fontSize, fontColor, sound)
     local arrowImagePath = "assets/ui/textbox_arrow.png"
     local arrowMetaPath = "assets/ui/textbox_arrow.json"
 
-    local function numPages(_text, _fontSize, _boxWidth)
-        -- figure out how many pages the text needs to fit
-        return(math.floor(_fontSize * string.len(_text) / _boxWidth / 2))
-    end
-
     local function sliceTextToPage(_text, _page, _charsPerPage)
         return(
             _text:sub(
@@ -57,8 +52,11 @@ local function textBox(text, font, fontSize, fontColor, sound)
     }
 
     local function loadTextBox()
-        attrs.charsPerPage = math.floor(bwidth / attrs.fontSize) * 3
-        attrs.totalPages = numPages(assets.text, attrs.fontSize, attrs.boxWidth)
+        attrs.linesPerBox = math.floor(attrs.boxHeight / attrs.fontSize) * 2
+        attrs.charsPerLine = math.floor(attrs.boxWidth / attrs.fontSize)
+        attrs.charsPerPage = attrs.linesPerBox * attrs.charsPerLine
+        attrs.totalPages = math.ceil(string.len(assets.text) / attrs.charsPerPage)
+        -- attrs.totalPages = numPages(assets.text, attrs.fontSize, attrs.boxWidth)
         assets.font = font or love.graphics.newFont(
             "assets/fonts/pixeldroidMenuRegular.ttf", attrs.fontSize
         )
@@ -73,12 +71,12 @@ local function textBox(text, font, fontSize, fontColor, sound)
         love.graphics.draw(assets.boxImg, x, y)
         love.graphics.printf(
             {attrs.color, sliceTextToPage(assets.text, state.page, attrs.charsPerPage)},
-            assets.font, x, y, attrs.boxWidth, "center"
+            assets.font, x, y + attrs.fontSize / 2, attrs.boxWidth, "center"
         )
         if state.page ~= attrs.totalPages then
             assets.arrowAnim:draw(
-                x + attrs.boxWidth - assets.arrowImg:getWidth() * 0.75,
-                y + attrs.boxHeight - assets.arrowImg:getHeight() * 2
+                x + attrs.boxWidth - assets.arrowImg:getWidth() * 0.6,
+                y + attrs.boxHeight - assets.arrowImg:getHeight() * 1.5
             )
         end
     end
