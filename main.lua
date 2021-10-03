@@ -18,9 +18,13 @@ WindowHeight = love.graphics.getHeight()
 
 -- A primary callback of LÖVE that is called only once
 function love.load()
-    alchemy = Alchemy:load()
+    Alchemy:load()
     physicker:load()
     frog:load()
+
+    lavender = Alchemy:get_ingredient("lavender")
+    salve = Alchemy:mix_two(lavender, lavender)
+    -- salve = Alchemy:get_concoction("salve")
 end
 
 -- A primary callback of LÖVE that is called continuously
@@ -33,4 +37,7 @@ end
 function love.draw()
     physicker:draw()
     frog:draw()
+
+    lavender:draw(50, 10)
+    salve:draw(50, 30)
 end

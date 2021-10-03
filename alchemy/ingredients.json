@@ -1,5 +1,6 @@
 {
-    "Lavender": {
+    "lavender": {
+        "name": "lavender",
         "description": "Beautiful boughs of purple lavender",
         "relative_sprite_path": "assets/sprites/ingredients/lavender.png",
         "relative_metadata_path": "assets/sprites/ingredients/lavender.json",
