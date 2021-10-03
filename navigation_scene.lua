@@ -3,6 +3,7 @@ Scene = require "scene"
 local sti = require "3rd/sti/sti"
 local physicker = require"physicker"
 local frog = require"frog"
+local textbox = require"textbox"
 
 local navigation_scene = Scene:new("navigation")
 
@@ -16,13 +17,16 @@ function navigation_scene:load()
 
     physicker:load()
     frog:load()
+    Greeting = textbox(
+        "Move around, bro! Work the room. Explore this beautiful world."
+    )
+    Greeting.load()
 end
 
 function navigation_scene:update(dt, gamestate)
     World:update(dt)
     physicker:update(dt)
     frog:update(dt)
-
     if love.keyboard.isDown("e") then
         gamestate:setAlchemyScene()
     end
@@ -35,6 +39,7 @@ function navigation_scene:draw(sx, sy)
     physicker:draw()
     frog:draw()
     love.graphics.pop()
+    Greeting.draw()
 end
 
 function BeginContact(a, b, collision)
