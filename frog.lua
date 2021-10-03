@@ -43,10 +43,7 @@ end
 
 function frog:draw()
     if self.spawn then
-        love.graphics.push()
-        love.graphics.scale(3, 3)
         self.animation[self.anim]:draw(self.x+xshift-width/2, self.y-height/2, 0, xdir, 1)
-        love.graphics.pop()
     end
     love.graphics.print("Duration: ", 400, 25)
 	love.graphics.print(duration, 500, 25)
