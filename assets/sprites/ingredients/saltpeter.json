@@ -1,5 +1,6 @@
-{ "frames": {
-   "saltpeter 0.aseprite": {
+{ "frames": [
+   {
+    "filename": "saltpeter 0.aseprite",
     "frame": { "x": 0, "y": 0, "w": 22, "h": 22 },
     "rotated": false,
     "trimmed": false,
@@ -7,7 +8,8 @@
     "sourceSize": { "w": 22, "h": 22 },
     "duration": 300
    },
-   "saltpeter 1.aseprite": {
+   {
+    "filename": "saltpeter 1.aseprite",
     "frame": { "x": 22, "y": 0, "w": 22, "h": 22 },
     "rotated": false,
     "trimmed": false,
@@ -15,7 +17,7 @@
     "sourceSize": { "w": 22, "h": 22 },
     "duration": 300
    }
- },
+ ],
  "meta": {
   "app": "http://www.aseprite.org/",
   "version": "1.2.29-x64",
