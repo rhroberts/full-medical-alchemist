@@ -1,20 +1,20 @@
 { "frames": [
    {
     "filename": "textbox_arrow 0.aseprite",
-    "frame": { "x": 0, "y": 0, "w": 7, "h": 5 },
+    "frame": { "x": 0, "y": 0, "w": 15, "h": 10 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 7, "h": 5 },
-    "sourceSize": { "w": 7, "h": 5 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 15, "h": 10 },
+    "sourceSize": { "w": 15, "h": 10 },
     "duration": 300
    },
    {
     "filename": "textbox_arrow 1.aseprite",
-    "frame": { "x": 7, "y": 0, "w": 7, "h": 5 },
+    "frame": { "x": 15, "y": 0, "w": 15, "h": 10 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 7, "h": 5 },
-    "sourceSize": { "w": 7, "h": 5 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 15, "h": 10 },
+    "sourceSize": { "w": 15, "h": 10 },
     "duration": 300
    }
  ],
@@ -23,7 +23,7 @@
   "version": "1.2.29-x64",
   "image": "textbox_arrow.png",
   "format": "RGBA8888",
-  "size": { "w": 14, "h": 5 },
+  "size": { "w": 30, "h": 10 },
   "scale": "1",
   "frameTags": [
    { "name": "Idle", "from": 0, "to": 1, "direction": "forward" }
