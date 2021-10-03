@@ -30,6 +30,7 @@ function navigation_scene:update(dt, gamestate)
     if love.keyboard.isDown("e") then
         gamestate:setAlchemyScene()
     end
+    Greeting.update(dt)
 end
 
 function navigation_scene:draw(sx, sy)
