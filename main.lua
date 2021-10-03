@@ -17,7 +17,7 @@ local alchemy_scene = require"alchemy_scene"
 
 -- levels or scenes in our game.
 local GameState = {
-    current = alchemy_scene,
+    current = nav_scene,
     scenes = {
         nav_scene,
         alchemy_scene
