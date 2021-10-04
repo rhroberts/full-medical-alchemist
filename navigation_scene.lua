@@ -7,7 +7,7 @@ local textbox = require"textbox"
 
 local navigation_scene = Scene:new("navigation")
 
-function navigation_scene:load() 
+function navigation_scene:load()
     -- Load map file
     Map = sti("assets/map/map_test.lua", {"box2d"})
     World = love.physics.newWorld(0, 0)
@@ -17,10 +17,13 @@ function navigation_scene:load()
 
     physicker:load()
     frog:load()
+    -- add an example text box
     Greeting = textbox(
         "Move around, bro! Work the room. Explore this beautiful world."
     )
     Greeting.load()
+    -- tunez
+    NavTheme = love.audio.newSource("assets/audio/music/navigation_scene.ogg", "static")
 end
 
 function navigation_scene:update(dt, gamestate)
@@ -29,6 +32,9 @@ function navigation_scene:update(dt, gamestate)
     frog:update(dt)
     if love.keyboard.isDown("e") then
         gamestate:setAlchemyScene()
+    end
+    if not NavTheme:isPlaying() then
+        NavTheme:play()
     end
     Greeting.update(dt)
 end
