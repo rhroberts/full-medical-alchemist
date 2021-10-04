@@ -1,4 +1,5 @@
 local peachy = require("3rd/peachy/peachy")
+local textbox = require"textbox"
 
 Patient = {}
 
@@ -17,6 +18,9 @@ function Patient:new(n, bed, delay)
     self.animationName = "idle_bwd"
     self.xShift = 0  -- so turning around doesn't look jumpy
     self.xDir = 1
+    self.greeting = textbox("Hello Mr. Physicker!")
+    self.greeting.load()
+    self.speak = false
 
     self.__index = self
     return setmetatable({}, self)
@@ -40,11 +44,18 @@ function Patient:draw()
         self.x + self.xShift - self.width / 2, self.y - self.height / 2,
         0, self.xDir, 1
     )
+    if self.speak then
+        love.graphics.pop()
+        self.greeting.draw(self.x, self.y)
+        love.graphics.push()
+        love.graphics.scale(GlobalScale, GlobalScale)
+    end
 end
 
 function Patient:update(dt)
     self:move(dt)
     self.animation[self.animationName]:update(dt)
+    self.greeting.update(dt)
 end
 
 function Patient:move(dt)
@@ -56,11 +67,13 @@ function Patient:move(dt)
                 self.animationName = "walk_bwd"
             elseif self.accumulator < 3.0 then
                 self.animationName = "idle_bwd"
+                self.speak = true
             elseif self.accumulator < 4.1 then
                 self.x = self.x + self.vel * dt
                 self.animationName = "walk_side"
                 self.xDir = 1
                 self.xShift = 0
+                self.speak = false
             elseif self.accumulator < 5.15 then
                 self.y = self.y - self.vel * dt
                 self.animationName = "walk_bwd"
@@ -78,11 +91,13 @@ function Patient:move(dt)
                 self.animationName = "walk_bwd"
             elseif self.accumulator < 3.0 then
                 self.animationName = "idle_bwd"
+                self.speak = true
             elseif self.accumulator < 4.1 then
                 self.x = self.x + self.vel * dt
                 self.animationName = "walk_side"
                 self.xDir = 1
                 self.xShift = 0
+                self.speak = false
             elseif self.accumulator < 5.2 then
                 self.y = self.y + self.vel * dt
                 self.animationName = "walk_fwd"
@@ -100,9 +115,11 @@ function Patient:move(dt)
                 self.animationName = "walk_bwd"
             elseif self.accumulator < 3.0 then
                 self.animationName = "idle_bwd"
+                self.speak = true
             elseif self.accumulator < 3.3 then
                 self.y = self.y - self.vel * dt
                 self.animationName = "walk_bwd"
+                self.speak = false
             elseif self.accumulator < 4.5 then
                 self.x = self.x - self.vel * dt
                 self.animationName = "walk_side"
@@ -125,9 +142,11 @@ function Patient:move(dt)
                 self.animationName = "walk_bwd"
             elseif self.accumulator < 3.0 then
                 self.animationName = "idle_bwd"
+                self.speak = true
             elseif self.accumulator < 3.3 then
                 self.y = self.y - self.vel * dt
                 self.animationName = "walk_bwd"
+                self.speak = false
             elseif self.accumulator < 4.5 then
                 self.x = self.x - self.vel * dt
                 self.animationName = "walk_side"
