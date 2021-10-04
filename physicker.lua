@@ -31,6 +31,9 @@ function physicker:load()
     self.physics.body = love.physics.newBody(World, self.x, self.y, "dynamic")
     self.physics.shape = love.physics.newRectangleShape(self.width, self.height)
     self.physics.fixture = love.physics.newFixture(self.physics.body, self.physics.shape)
+    self.soundEffects = {
+        walking = love.audio.newSource("assets/audio/effects/walking.ogg", "static")
+    }
 end
 
 function physicker:draw()
@@ -62,7 +65,6 @@ function physicker:move(dt)
         self.yVel = self.vel
         -- self.y = self.y + self.vel * dt
         self.animationName = "walk_fwd"
-    -- Set idle animations
     else
         self.yVel = 0
         if self.animationName == "walk_fwd" then
@@ -92,7 +94,11 @@ function physicker:move(dt)
             self.animationName = "idle_side"
         end
     end
-    
+    if (self.xVel ~= 0 or self.yVel ~= 0) and not self.soundEffects.walking:isPlaying() then
+        self.soundEffects.walking:play()
+    elseif self.xVel == 0 and self.yVel == 0 then
+        self.soundEffects.walking:stop()
+    end
 end
 
 function physicker:beginContact(a, b, collision)
