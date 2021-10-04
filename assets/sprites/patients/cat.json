@@ -166,7 +166,7 @@
    { "name": "Idle_Bwd", "from": 4, "to": 5, "direction": "forward" },
    { "name": "Walk_Bwd", "from": 6, "to": 7, "direction": "forward" },
    { "name": "Idle_Side", "from": 8, "to": 12, "direction": "forward" },
-   { "name": "Idle_Walk", "from": 13, "to": 16, "direction": "forward" }
+   { "name": "Walk_Side", "from": 13, "to": 16, "direction": "forward" }
   ],
   "layers": [
    { "name": "cat", "opacity": 255, "blendMode": "normal" }

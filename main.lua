@@ -10,6 +10,7 @@
 -- Declare Global Parameters Here
 WindowWidth = love.graphics.getWidth()
 WindowHeight = love.graphics.getHeight()
+love.graphics.setDefaultFilter("nearest", "nearest")
 
 -- Define Local Parameters Here
 local navigation_scene = require"navigation_scene"
