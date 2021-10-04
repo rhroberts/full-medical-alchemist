@@ -39,6 +39,7 @@ function frog:load()
     self.physics.body = love.physics.newBody(World, self.x, self.y, "dynamic")
     self.physics.shape = love.physics.newRectangleShape(width, height)
     self.physics.fixture = love.physics.newFixture(self.physics.body, self.physics.shape)
+    self.ribbet = love.audio.newSource("assets/audio/effects/frog.ogg", "static")
 end
 
 function frog:draw()
@@ -62,6 +63,9 @@ function frog:update(dt)
     -- Spawn the frog
     if love.keyboard.isDown("y") then
         self.spawn = true
+        if not self.ribbet:isPlaying() then
+            self.ribbet:play()
+        end
     end
     -- Process time accumulation
     if self.spawn then
