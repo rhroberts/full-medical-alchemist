@@ -1,0 +1,51 @@
+{ "frames": [
+   {
+    "filename": "title_screen 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 240, "h": 160 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 240, "h": 160 },
+    "sourceSize": { "w": 240, "h": 160 },
+    "duration": 500
+   },
+   {
+    "filename": "title_screen 1.aseprite",
+    "frame": { "x": 240, "y": 0, "w": 240, "h": 160 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 240, "h": 160 },
+    "sourceSize": { "w": 240, "h": 160 },
+    "duration": 500
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.29-x64",
+  "image": "title_screen.png",
+  "format": "RGBA8888",
+  "size": { "w": 480, "h": 160 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Default", "from": 0, "to": 1, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Background", "opacity": 255, "blendMode": "normal" },
+   { "name": "Physicker", "opacity": 255, "blendMode": "normal" },
+   { "name": "Ingredients", "opacity": 255, "blendMode": "normal" },
+   { "name": "Text", "opacity": 255, "blendMode": "normal" },
+   { "name": "blisterwort", "opacity": 255, "blendMode": "normal" },
+   { "name": "saltpeter", "opacity": 255, "blendMode": "normal" },
+   { "name": "lavender", "opacity": 255, "blendMode": "normal" },
+   { "name": "ichor", "opacity": 255, "blendMode": "normal" },
+   { "name": "fire_moss", "opacity": 255, "blendMode": "normal" },
+   { "name": "hawthorn", "opacity": 255, "blendMode": "normal" },
+   { "name": "harpy_talon", "opacity": 255, "blendMode": "normal" },
+   { "name": "fish_eyes", "opacity": 255, "blendMode": "normal" },
+   { "name": "tinctures", "opacity": 255, "blendMode": "normal" },
+   { "name": "salve", "opacity": 255, "blendMode": "normal" },
+   { "name": "potion", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

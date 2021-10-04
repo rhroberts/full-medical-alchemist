@@ -1,4 +1,4 @@
-Scene = require "scene"
+local scene = require "scene"
 
 local sti = require "3rd/sti/sti"
 local physicker = require"physicker"
@@ -6,8 +6,9 @@ local frog = require"frog"
 local cat = require"cat"
 local patient = require"patient"
 local textbox = require"textbox"
+local utils = require"utils"
 
-local navigation_scene = Scene:new("navigation")
+local navigation_scene = scene:new("navigation")
 
 function navigation_scene:load()
     -- Load map file
@@ -20,20 +21,10 @@ function navigation_scene:load()
     physicker:load()
     frog:load()
     cat:load()
-    -- Randomize patients
-    local P = {1, 2, 3, 4}
-    for i = 1, #P - 1 do
-        local j = math.random(i, #P)
-        P[i], P[j] = P[j], P[i]
-    end
-    p1 = patient:new(P[1], 1, 0)
-    p2 = patient:new(P[2], 2, 3)
-    p3 = patient:new(P[3], 3, 6)
-    p4 = patient:new(P[4], 4, 9)
-    p1:load()
-    p2:load()
-    p3:load()
-    p4:load()
+    -- p1:load()
+    -- p2:load()
+    -- p3:load()
+    -- p4:load()
 
     -- add an example text box
     Greeting = textbox(
@@ -43,23 +34,22 @@ function navigation_scene:load()
     -- tunez
     NavTheme = love.audio.newSource("assets/audio/music/navigation_scene.ogg", "static")
 end
-  
 
 function navigation_scene:update(dt, gamestate)
     World:update(dt)
     physicker:update(dt)
     frog:update(dt)
     cat:update(dt)
-    p1:update(dt)
-    p2:update(dt)
-    p3:update(dt)
-    p4:update(dt)
+    -- p1:update(dt)
+    -- p2:update(dt)
+    -- p3:update(dt)
+    -- p4:update(dt)
     if love.keyboard.isDown("e") then
         gamestate:setAlchemyScene()
     end
-    if not NavTheme:isPlaying() then
-        NavTheme:play()
-    end
+    -- if not NavTheme:isPlaying() then
+    --     NavTheme:play()
+    -- end
     Greeting.update(dt)
 end
 
@@ -70,10 +60,10 @@ function navigation_scene:draw(sx, sy)
     physicker:draw()
     frog:draw()
     cat:draw()
-    p1:draw()
-    p2:draw()
-    p3:draw()
-    p4:draw()
+    -- p1:draw()
+    -- p2:draw()
+    -- p3:draw()
+    -- p4:draw()
     love.graphics.pop()
     Greeting.draw()
 end
