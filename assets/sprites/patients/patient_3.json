@@ -1,0 +1,186 @@
+{ "frames": [
+   {
+    "filename": "patient_3 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 1.aseprite",
+    "frame": { "x": 12, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 2.aseprite",
+    "frame": { "x": 24, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 3.aseprite",
+    "frame": { "x": 36, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 4.aseprite",
+    "frame": { "x": 48, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 5.aseprite",
+    "frame": { "x": 60, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 6.aseprite",
+    "frame": { "x": 72, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 7.aseprite",
+    "frame": { "x": 84, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 8.aseprite",
+    "frame": { "x": 96, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 9.aseprite",
+    "frame": { "x": 108, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 10.aseprite",
+    "frame": { "x": 120, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 11.aseprite",
+    "frame": { "x": 132, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 12.aseprite",
+    "frame": { "x": 144, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 13.aseprite",
+    "frame": { "x": 156, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 14.aseprite",
+    "frame": { "x": 168, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 15.aseprite",
+    "frame": { "x": 180, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 16.aseprite",
+    "frame": { "x": 192, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   },
+   {
+    "filename": "patient_3 17.aseprite",
+    "frame": { "x": 204, "y": 0, "w": 12, "h": 22 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 12, "h": 22 },
+    "sourceSize": { "w": 12, "h": 22 },
+    "duration": 300
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.29-x64",
+  "image": "patient_3.png",
+  "format": "RGBA8888",
+  "size": { "w": 216, "h": 22 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle_Fwd", "from": 0, "to": 1, "direction": "forward" },
+   { "name": "Walk_Fwd", "from": 2, "to": 5, "direction": "forward" },
+   { "name": "Idle_Bwd", "from": 6, "to": 7, "direction": "forward" },
+   { "name": "Walk_Bwd", "from": 8, "to": 11, "direction": "forward" },
+   { "name": "Idle_Side", "from": 12, "to": 13, "direction": "forward" },
+   { "name": "Walk_Side", "from": 14, "to": 17, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "patient_3", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
