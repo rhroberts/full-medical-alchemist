@@ -1,8 +1,7 @@
-local peachy = require("3rd/peachy/peachy")
+local peachy = require"3rd/peachy/peachy"
+local scene = require"scene"
 
-Scene = require "scene"
-
-local alchemy_scene = Scene:new("alchemy")
+local alchemy_scene = scene:new("alchemy")
 
 function alchemy_scene:load()
     self.background = love.graphics.newImage("assets/alchemy_screen/alchemy_background.png")

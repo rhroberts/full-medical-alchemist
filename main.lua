@@ -9,17 +9,22 @@
 -- Declare Global Parameters Here
 WindowWidth = love.graphics.getWidth()
 WindowHeight = love.graphics.getHeight()
+love.graphics.setDefaultFilter("nearest", "nearest")
 
 -- Define Local Parameters Here
-local navigation_scene = require"navigation_scene"
-local alchemy_scene = require"alchemy_scene"
+local navigationScene = require"navigation_scene"
+local alchemyScene = require"alchemy_scene"
+local titleScene = require"title_scene"
+local enterPatientScene = require"enter_patients_scene"
 
 -- levels or scenes in our game.
 local GameState = {
-    current = navigation_scene,
+    current = titleScene,
     scenes = {
-        navigation_scene = navigation_scene,
-        alchemy_scene = alchemy_scene
+        titleScene = titleScene,
+        enterPatientScene = enterPatientScene,
+        navigationScene = navigationScene,
+        alchemyScene = alchemyScene
     },
     sx = 3,
     sy = 3
@@ -28,18 +33,26 @@ local GameState = {
 -- hooks for updating state. free to call from within
 -- a scene.
 
+function GameState:setTitleScene()
+    self.current = self.scenes.titleScene
+end
+
+function GameState:setEnterPatientScene()
+    self.current = self.scenes.enterPatientScene
+end
+
 function GameState:setNavigationScene()
-    self.current = self.scenes.navigation_scene
+    self.current = self.scenes.navigationScene
 end
 
 function GameState:setAlchemyScene()
-    self.current = self.scenes.alchemy_scene
+    self.current = self.scenes.alchemyScene
 end
 
 -- A primary callback of LÖVE that is called only once
 function love.load()
     GameState.current:load()
-    for name, scene in pairs(GameState.scenes) do
+    for _, scene in pairs(GameState.scenes) do
         scene:load()
     end
 end

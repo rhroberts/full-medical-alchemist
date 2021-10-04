@@ -4,16 +4,16 @@ local peachy = require("3rd/peachy/peachy")
 
 -- only one physicker, so no metatable shenanigans here
 local physicker = {
-    x = 40,
-    y = 100,
+    x = 112,
+    y = 30,
     xVel = 0,
     yVel = 0,
     vel = 50,  -- default velocity to apply to xVel or yVel
     animationName = "idle_fwd",
     xShift = 0,  -- so turning around doesn't look jumpy
-    xDirection = 1,
-    spritesheet = love.graphics.newImage("assets/sprites/patients/patient_1.png"),
-    asepriteMeta = "assets/sprites/patients/patient_1.json"
+    xDir = 1,
+    spritesheet = love.graphics.newImage("assets/sprites/physicker/physicker.png"),
+    asepriteMeta = "assets/sprites/physicker/physicker.json"
 }
 
 function physicker:load()
