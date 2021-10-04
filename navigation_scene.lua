@@ -9,6 +9,7 @@ local textbox = require"textbox"
 local utils = require"utils"
 
 local navigation_scene = scene:new("navigation")
+local font = love.graphics.newFont("assets/fonts/pixeldroidMenuRegular.ttf", 16)
 
 function navigation_scene:load()
     -- Load map file
@@ -29,7 +30,8 @@ function navigation_scene:load()
 
     -- add an example text box
     Greeting = textbox(
-        "Move around, bro! Work the room. Explore this beautiful world."
+[[Oh no! We couldn't finish our  game! We hope you faired better. Happy LD49 : )
+PS: Try pressing 'y' and 'u'.]]
     )
     Greeting.load()
     -- tunez
@@ -49,9 +51,17 @@ function navigation_scene:update(dt, gamestate)
     if love.keyboard.isDown("e") then
         gamestate:setAlchemyScene()
     end
-    -- if not NavTheme:isPlaying() then
-    --     NavTheme:play()
-    -- end
+    if love.keyboard.isDown("t") then
+        if NavTheme:isPlaying() then
+            NavTheme:stop()
+        end
+        Greeting.resetTextBox()
+        gamestate:setTitleScene()
+        return
+    end
+    if not NavTheme:isPlaying() then
+        NavTheme:play()
+    end
     Greeting.update(dt)
 end
 
@@ -68,6 +78,20 @@ function navigation_scene:draw(sx, sy)
     -- p4:draw()
     love.graphics.pop()
     Greeting.draw()
+    -- hardcode instruction cuz we're outta time
+    local tShift = 300
+    love.graphics.printf(
+        {{0, 0, 0}, "Press 'e' to open your alchemy set"}, font,
+        WindowWidth - tShift - 12, 0, tShift, "right"
+    )
+    love.graphics.printf(
+        {{0, 0, 0}, "Press 'p' to page through text"}, font,
+        WindowWidth - tShift - 12, 12, tShift, "right"
+    )
+    love.graphics.printf(
+        {{0, 0, 0}, "Press 't' to return to title screen"}, font,
+        WindowWidth - tShift - 12, 24, tShift, "right"
+    )
 end
 
 function BeginContact(a, b, collision)

@@ -4,7 +4,7 @@ local peachy = require("3rd/peachy/peachy")
 
 -- only one cat, so no metatable shenanigans here
 local cat = {
-    spawn = true,
+    -- spawn = true,
     x = 200,
     y = 100,
     xVel = 0,
@@ -39,6 +39,7 @@ function cat:load()
     self.physics.body = love.physics.newBody(World, self.x, self.y, "dynamic")
     self.physics.shape = love.physics.newRectangleShape(width, height)
     self.physics.fixture = love.physics.newFixture(self.physics.body, self.physics.shape)
+    self.meow = love.audio.newSource("assets/audio/effects/cat.ogg", "static")
 end
 
 function cat:draw()
@@ -62,6 +63,9 @@ function cat:update(dt)
     -- Spawn the cat
     if love.keyboard.isDown("u") then
         self.spawn = true
+        if not self.meow:isPlaying() then
+            self.meow:play()
+        end
     end
     -- Process time accumulation
     if self.spawn then

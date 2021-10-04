@@ -84,11 +84,17 @@ local function textBox(text, font, fontSize, fontColor, sound)
     local function nextPage()
         if state.page < attrs.totalPages then
             state.page = state.page + 1
+        else
+            state.page = 1
         end
     end
 
     local function updateTextBox(dt)
         assets.arrowAnim:update(dt)
+    end
+
+    local function resetTextBox()
+        state.page = 1
     end
 
     function love.keypressed(key)
@@ -101,7 +107,8 @@ local function textBox(text, font, fontSize, fontColor, sound)
         load = loadTextBox,
         draw = drawTextBox,
         update = updateTextBox,
-        nextPage = nextPage
+        nextPage = nextPage,
+        resetTextBox = resetTextBox
     }
 end
 
