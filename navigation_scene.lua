@@ -26,6 +26,7 @@ function navigation_scene:load()
     -- p3:load()
     -- p4:load()
 
+
     -- add an example text box
     Greeting = textbox(
         "Move around, bro! Work the room. Explore this beautiful world."
@@ -34,6 +35,7 @@ function navigation_scene:load()
     -- tunez
     NavTheme = love.audio.newSource("assets/audio/music/navigation_scene.ogg", "static")
 end
+  
 
 function navigation_scene:update(dt, gamestate)
     World:update(dt)
