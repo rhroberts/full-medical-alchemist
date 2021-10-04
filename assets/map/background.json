@@ -1,0 +1,33 @@
+{ "frames": [
+   {
+    "filename": "background.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 240, "h": 160 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 240, "h": 160 },
+    "sourceSize": { "w": 240, "h": 160 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.29-x64",
+  "image": "background.png",
+  "format": "RGBA8888",
+  "size": { "w": 240, "h": 160 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Floor", "opacity": 255, "blendMode": "normal" },
+   { "name": "Bed Mats", "opacity": 255, "blendMode": "normal" },
+   { "name": "Beds", "opacity": 255, "blendMode": "normal" },
+   { "name": "Walls", "opacity": 255, "blendMode": "normal" },
+   { "name": "Desk Shadow", "opacity": 255, "blendMode": "normal" },
+   { "name": "Desk", "opacity": 255, "blendMode": "normal" },
+   { "name": "Desk Accoutrements", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
