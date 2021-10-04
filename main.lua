@@ -1,9 +1,8 @@
 -- Full Medical Alchemist
 
--- In the criminal justice system, sexually based offenses are considered especially heinous.
--- In New York City, the dedicated detectives who investigate these vicious felonies are members 
--- of an elite squad known as the Special Victims Unit. 
--- These are their stories.
+-- In the medicinal alchemy world, humoralism based treatments are considered especially unstable.
+-- In Ballurdia, the dedicated physickers who investigate these dangerous practices are members 
+-- of an elite group known as the Full Medical Alchemists. These are their stories.
 
 -- Load Modules / Libraries
 
