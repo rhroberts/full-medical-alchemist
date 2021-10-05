@@ -11,12 +11,25 @@ function titleScene:load()
         text = "Press [enter] to start!",
         font = love.graphics.newFont("assets/fonts/pixeldroidMenuRegular.ttf", 24)
     }
+    self.titleTheme = love.audio.newSource("assets/audio/music/title_scene.ogg", "static")
 end
 
 function titleScene:update(dt, gameState)
     self.animation:update(dt)
 
+    print(self.titleTheme:isPlaying())
+    if not self.titleTheme:isPlaying() then
+        self.titleTheme:play()
+    end
     if love.keyboard.isDown("return") then
+        if self.titleTheme:isPlaying() then
+            local fade = 150
+            for i=1, fade do
+                self.titleTheme:setVolume(1 - i / fade)
+                love.timer.sleep(0.01)
+            end
+            self.titleTheme:stop()
+        end
         gameState:setNavigationScene()
     end
 end
