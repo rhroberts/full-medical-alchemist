@@ -17,7 +17,6 @@ end
 function titleScene:update(dt, gameState)
     self.animation:update(dt)
 
-    print(self.titleTheme:isPlaying())
     if not self.titleTheme:isPlaying() then
         self.titleTheme:play()
     end
