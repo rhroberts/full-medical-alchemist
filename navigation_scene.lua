@@ -20,6 +20,7 @@ function navigation_scene:load()
     Map.layers.Walls.visible = false
 
     physicker:load()
+    physicker.locked = false
     frog:load()
     cat:load()
     -- p1:load()
