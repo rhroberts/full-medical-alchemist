@@ -22,11 +22,6 @@ function titleScene:update(dt, gameState)
     end
     if love.keyboard.isDown("return") then
         if self.titleTheme:isPlaying() then
-            local fade = 150
-            for i=1, fade do
-                self.titleTheme:setVolume(1 - i / fade)
-                love.timer.sleep(0.01)
-            end
             self.titleTheme:stop()
         end
         gameState:setNavigationScene()
