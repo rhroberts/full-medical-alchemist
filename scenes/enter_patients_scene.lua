@@ -1,5 +1,5 @@
 local scene = require"scene"
-local patient = require"patient"
+local patient = require"characters/patient"
 
 local enterPatientsScene = scene:new("enter_patients")
 

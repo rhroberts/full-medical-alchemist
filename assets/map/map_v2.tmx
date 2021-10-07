@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="240" height="160" tilewidth="1" tileheight="1" infinite="0" nextlayerid="4" nextobjectid="47">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="240" height="160" tilewidth="1" tileheight="1" infinite="0" nextlayerid="4" nextobjectid="48">
  <editorsettings>
-  <export target="map_test.lua" format="lua"/>
+  <export target="map_v2.lua" format="lua"/>
  </editorsettings>
  <tileset firstgid="1" name="background" tilewidth="240" tileheight="160" tilecount="1" columns="1">
   <image source="background.png" width="240" height="160"/>
@@ -186,16 +186,6 @@
     <property name="collidable" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="6" x="20.5" y="0" width="66.5" height="20.125">
-   <properties>
-    <property name="collidable" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="8" x="0" y="0" width="20.125" height="53">
-   <properties>
-    <property name="collidable" type="bool" value="true"/>
-   </properties>
-  </object>
   <object id="9" x="0" y="73.875" width="40" height="2.125">
    <properties>
     <property name="collidable" type="bool" value="true"/>
@@ -245,6 +235,12 @@
    <properties>
     <property name="collidable" type="bool" value="true"/>
    </properties>
+  </object>
+  <object id="47" x="0.0750655" y="0.225196">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+   <polygon points="-0.0747863,-0.235043 -0.0805676,52.7304 19.9235,52.7438 19.908,19.7798 86.7132,19.8381 86.8751,-0.00562538 87.0215,-0.225196"/>
   </object>
  </objectgroup>
 </map>

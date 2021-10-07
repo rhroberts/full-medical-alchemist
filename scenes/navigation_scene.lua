@@ -1,19 +1,17 @@
-local scene = require "scene"
-
-local sti = require "3rd/sti/sti"
-local physicker = require"physicker"
-local frog = require"frog"
-local cat = require"cat"
-local patient = require"patient"
-local textbox = require"textbox"
-local utils = require"utils"
+local sti = require"3rd/sti/sti"
+local scene = require"scene"
+local physicker = require"characters/physicker"
+local frog = require"characters/frog"
+local cat = require"characters/cat"
+local patient = require"characters/patient"
+local textbox = require"ui/textbox"
 
 local navigation_scene = scene:new("navigation")
 local font = love.graphics.newFont("assets/fonts/pixeldroidMenuRegular.ttf", 16)
 
 function navigation_scene:load()
     -- Load map file
-    Map = sti("assets/map/map_test.lua", {"box2d"})
+    Map = sti("assets/map/map_v2.lua", {"box2d"})
     World = love.physics.newWorld(0, 0)
     World:setCallbacks(BeginContact, EndContact)
     Map:box2d_init(World)
@@ -22,11 +20,6 @@ function navigation_scene:load()
     physicker:load()
     frog:load()
     cat:load()
-    -- p1:load()
-    -- p2:load()
-    -- p3:load()
-    -- p4:load()
-
 
     -- add an example text box
     Greeting = textbox(
@@ -44,10 +37,6 @@ function navigation_scene:update(dt, gamestate)
     physicker:update(dt)
     frog:update(dt)
     cat:update(dt)
-    -- p1:update(dt)
-    -- p2:update(dt)
-    -- p3:update(dt)
-    -- p4:update(dt)
     if love.keyboard.isDown("e") then
         gamestate:setAlchemyScene()
     end
@@ -72,10 +61,6 @@ function navigation_scene:draw(sx, sy)
     physicker:draw()
     frog:draw()
     cat:draw()
-    -- p1:draw()
-    -- p2:draw()
-    -- p3:draw()
-    -- p4:draw()
     love.graphics.pop()
     Greeting.draw()
     -- hardcode instruction cuz we're outta time

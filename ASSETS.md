@@ -1,30 +1,14 @@
 # Assets To Make
 
-## Player (Mr. Physicker, The Physicker, )
+## Sprites
 
-### Animations
+### Mr. Physicker
 
-- [ ] Walking
-- [ ] Idle
+- [x] Walking
+- [x] Idle
 - [ ] Walking w/item
 
-### Sound Effects
-
-- [ ] Picking up item
-- [ ] Administering potions
-- 
-
-## Map
-
-- [ ] Details TBD
-
 ## Ingredients
-
-### Icons
-
-### Sound Effects
-
-- [ ] Select an ingredient
 
 ## Patients
 
@@ -32,10 +16,27 @@
 - [x] Idle
 - [x] Laying in bed/being sick
 
-## Music
+## Tilemap
 
-- [ ] Intro screen
+- [ ] Details TBD
+
+## Audio
+
+### Music
+
+- [x] Intro screen
+- [x] Navigation scene
+  - might revisit, not in love with it
 - [ ] Game over
-- [ ] You won!
-- [ ] In the laboratory
-- [ ] ...
+- [ ] Alchemy scene
+- [ ] Victory scene
+
+### Sound Effects
+
+- [x] Walking
+- [ ] Picking up item
+- [ ] Administering potions
+- [ ] Select an ingredient
+- [x] Frog
+- [x] Cat
+  - maybe redo, can hear background hiss
