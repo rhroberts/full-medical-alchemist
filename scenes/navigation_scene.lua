@@ -12,6 +12,7 @@ local font = love.graphics.newFont("assets/fonts/pixeldroidMenuRegular.ttf", 16)
 
 function navigation_scene:load()
     -- Load map file
+    Background = love.graphics.newImage("assets/map/background.png")
     Map = sti("assets/map/map_v2.lua", {"box2d"})
     World = love.physics.newWorld(0, 0)
     World:setCallbacks(BeginContact, EndContact)
@@ -73,8 +74,8 @@ end
 function navigation_scene:draw(sx, sy)
     love.graphics.push()
     love.graphics.scale(sx, sy)
+    love.graphics.draw(Background)
     Map:draw(0, 0, sx, sy)
-
     physicker:draw()
     frog:draw()
     cat:draw()
