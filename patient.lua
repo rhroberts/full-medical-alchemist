@@ -46,7 +46,7 @@ function Patient:draw()
     )
     if self.speak then
         love.graphics.pop()
-        self.greeting.draw(self.x, self.y)
+        self.greeting.draw(self.x*GlobalScale + self.width, self.y*GlobalScale - GlobalScale*self.height*1.2)
         love.graphics.push()
         love.graphics.scale(GlobalScale, GlobalScale)
     end

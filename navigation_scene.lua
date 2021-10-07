@@ -7,6 +7,7 @@ local cat = require"cat"
 local patient = require"patient"
 local textbox = require"textbox"
 local utils = require"utils"
+local peachy = require("3rd/peachy/peachy")
 
 local navigation_scene = scene:new("navigation")
 local font = love.graphics.newFont("assets/fonts/pixeldroidMenuRegular.ttf", 16)
@@ -20,14 +21,18 @@ function navigation_scene:load()
     Map.layers.Walls.visible = false
 
     physicker:load()
-    physicker.locked = false
     frog:load()
     cat:load()
-    -- p1:load()
-    -- p2:load()
-    -- p3:load()
-    -- p4:load()
 
+    -- Load beds
+    beds = {
+        blue_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Blue_Unoccupied"),
+        blue_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Blue_Occupied"),
+        red_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Red_Unoccupied"),
+        red_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Red_Occupied"),
+        green_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Green_Unoccupied"),
+        green_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Green_Occupied"),
+    }
 
     -- add an example text box
     Greeting = textbox(
@@ -43,12 +48,13 @@ end
 function navigation_scene:update(dt, gamestate)
     World:update(dt)
     physicker:update(dt)
+    physicker.locked = false
     frog:update(dt)
     cat:update(dt)
-    -- p1:update(dt)
-    -- p2:update(dt)
-    -- p3:update(dt)
-    -- p4:update(dt)
+    p1:update(dt)
+    p2:update(dt)
+    p3:update(dt)
+    p4:update(dt)
     if love.keyboard.isDown("e") then
         gamestate:setAlchemyScene()
     end
@@ -70,13 +76,43 @@ function navigation_scene:draw(sx, sy)
     love.graphics.push()
     love.graphics.scale(sx, sy)
     Map:draw(0, 0, sx, sy)
+
     physicker:draw()
     frog:draw()
     cat:draw()
-    -- p1:draw()
-    -- p2:draw()
-    -- p3:draw()
-    -- p4:draw()
+    p1:draw()
+    p2:draw()
+    p3:draw()
+    p4:draw()
+    -- Draw beds
+    if complete_1 then
+        beds["green_oc"]:draw(223.0-beds["green_oc"]:getWidth()/2,
+                              25.0-beds["green_oc"]:getHeight()/2)
+    else
+        beds["green_unoc"]:draw(223.0-beds["green_unoc"]:getWidth()/2,
+                                25.0-beds["green_unoc"]:getHeight()/2)
+    end
+    if complete_2 then
+        beds["green_oc"]:draw(221.0-beds["green_oc"]:getWidth()/2,
+                                132.0-beds["green_oc"]:getHeight()/2)
+    else
+        beds["green_unoc"]:draw(221.0-beds["green_unoc"]:getWidth()/2,
+                                132.0-beds["green_unoc"]:getHeight()/2)
+    end
+    if complete_3 then
+        beds["blue_oc"]:draw(16.0-beds["blue_oc"]:getWidth()/2,
+                             97.0-beds["blue_oc"]:getHeight()/2)
+    else
+        beds["blue_unoc"]:draw(16.0-beds["blue_unoc"]:getWidth()/2,
+                               97.0-beds["blue_unoc"]:getHeight()/2)
+    end
+    if complete_4 then
+        beds["red_oc"]:draw(16.0-beds["red_oc"]:getWidth()/2,
+                            136.0-beds["red_oc"]:getHeight()/2)
+    else
+        beds["red_unoc"]:draw(16.0-beds["red_unoc"]:getWidth()/2,
+                              136.0-beds["red_unoc"]:getHeight()/2)
+    end
     love.graphics.pop()
     Greeting.draw()
     -- hardcode instruction cuz we're outta time
