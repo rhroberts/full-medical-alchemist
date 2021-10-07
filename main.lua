@@ -12,10 +12,10 @@ WindowHeight = love.graphics.getHeight()
 love.graphics.setDefaultFilter("nearest", "nearest")
 
 -- Define Local Parameters Here
-local navigationScene = require"navigation_scene"
-local alchemyScene = require"alchemy_scene"
-local titleScene = require"title_scene"
-local enterPatientScene = require"enter_patients_scene"
+local navigationScene = require"scenes/navigation_scene"
+local alchemyScene = require"scenes/alchemy_scene"
+local titleScene = require"scenes/title_scene"
+local enterPatientScene = require"scenes/enter_patients_scene"
 
 -- levels or scenes in our game.
 local GameState = {

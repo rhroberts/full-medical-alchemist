@@ -1,9 +1,9 @@
 local scene = require"scene"
 local sti = require "3rd/sti/sti"
 local peachy = require("3rd/peachy/peachy")
-local physicker = require"physicker"
-local cat = require"cat"
-local patient = require"patient"
+local physicker = require"characters/physicker"
+local cat = require"characters/cat"
+local patient = require"characters/patient"
 
 local enterPatientsScene = scene:new("enter_patients")
 local accumulator = 0.0
