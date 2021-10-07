@@ -13,7 +13,8 @@ local physicker = {
     xShift = 0,  -- so turning around doesn't look jumpy
     xDir = 1,
     spritesheet = love.graphics.newImage("assets/sprites/physicker/physicker.png"),
-    asepriteMeta = "assets/sprites/physicker/physicker.json"
+    asepriteMeta = "assets/sprites/physicker/physicker.json",
+    locked = false
 }
 
 function physicker:load()
@@ -44,7 +45,9 @@ function physicker:draw()
 end
 
 function physicker:update(dt)
-    self:move(dt)
+    if not self.locked then
+        self:move(dt)
+    end
     self.animation[self.animationName]:update(dt)
     self:syncPhysics()
 end
