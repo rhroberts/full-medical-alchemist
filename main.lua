@@ -66,4 +66,21 @@ end
 function love.draw()
     -- print(GameState.current.name)
     GameState.current:draw(GameState.sx, GameState.sy)
+    
+    -- Only for debugging
+    -- With (36, 24) grids are 20 pixels by 20 pixels
+    -- 720/36 = 20 pixels and 480/24 = 20 pixels
+    -- debugGrid(36, 24)
+end
+
+-- Draws a grid over the window for debugging
+function debugGrid(i, j)
+    ww, wh = love.graphics.getDimensions()
+    love.graphics.setColor(0,0,0, 0.2)
+    for k = 1, i do
+        for l = 1, j do
+            love.graphics.rectangle("line", (k-1)*ww/i, (l-1)*wh/j, ww/i, wh/j)
+        end
+    end
+    love.graphics.setColor(1,1,1,1)
 end

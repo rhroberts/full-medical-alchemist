@@ -4,14 +4,11 @@ local textbox = require"ui/textbox"
 Patient = {}
 
 function Patient:new(n, bed, delay)
-    print("Patient is #"..tostring(n).." going to bed #1 after "..tostring(delay).." seconds!")
-    self.spritesheet = love.graphics.newImage("assets/sprites/patients/patient_" .. tostring(n) .. ".png")
-    self.asepriteMeta = "assets/sprites/patients/patient_" .. tostring(n) .. ".json"
     self.n = n
-    self.x = 112
-    self.y = 171
     self.delay = delay
     self.bed = bed
+    self.x = 112
+    self.y = 171
     self.accumulator = 0
     self.vel = 50  -- default velocity to apply to xVel or yVel
     self.animationName = "idle_bwd"
@@ -19,11 +16,14 @@ function Patient:new(n, bed, delay)
     self.xDir = 1
     self.greeting = textbox("Hello Mr. Physicker!")
     self.speak = false
+    self.spritesheet = love.graphics.newImage("assets/sprites/patients/patient_" .. tostring(self.n) .. ".png")
+    self.asepriteMeta = "assets/sprites/patients/patient_" .. tostring(self.n) .. ".json"
+    print("Patient is #"..tostring(self.n).." going to bed #"..tostring(self.bed).." after "..tostring(self.delay).." seconds!")
     self.__index = self
     return setmetatable({}, self)
 end
 
-function Patient:load()
+function Patient:load(delay)
     self.animation = {
         idle_fwd = peachy.new(self.asepriteMeta, self.spritesheet, "Idle_Fwd"),
         walk_fwd = peachy.new(self.asepriteMeta, self.spritesheet, "Walk_Fwd"),
@@ -34,7 +34,9 @@ function Patient:load()
     }
     self.width = self.animation[self.animationName]:getWidth()
     self.height = self.animation[self.animationName]:getHeight()
+    self.delay = delay
     self.greeting.load()
+    -- print("Patient is #"..tostring(self.n).." going to bed #"..tostring(self.bed).." after "..tostring(self.delay).." seconds!")
 end
 
 function Patient:draw()
@@ -44,21 +46,15 @@ function Patient:draw()
     )
     if self.speak then
         love.graphics.pop()
-        self.greeting.draw(self.x, self.y)
+        self.greeting.draw(self.x*GlobalScale + self.width, self.y*GlobalScale - GlobalScale*self.height*1.2)
         love.graphics.push()
         love.graphics.scale(GlobalScale, GlobalScale)
     end
 end
 
 function Patient:update(dt)
-    self:move(dt)
     self.animation[self.animationName]:update(dt)
     self.greeting.update(dt)
-end
-
-function Patient:move(dt)
-    self.x = self.x + self.x * self.vel
-    self.y = self.y + self.y * self.vel
 end
 
 return Patient
