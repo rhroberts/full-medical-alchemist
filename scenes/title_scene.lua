@@ -24,7 +24,7 @@ function titleScene:update(dt, gameState)
         if self.titleTheme:isPlaying() then
             self.titleTheme:stop()
         end
-        gameState:setNavigationScene()
+        gameState:setEnterPatientScene()
     end
 end
 
