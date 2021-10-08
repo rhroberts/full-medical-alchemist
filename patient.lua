@@ -55,6 +55,11 @@ end
 function Patient:update(dt)
     self.animation[self.animationName]:update(dt)
     self.greeting.update(dt)
+    if not pause then
+        self.animation[self.animationName]:play()
+    else
+        self.animation[self.animationName]:pause()
+    end
 end
 
 return Patient

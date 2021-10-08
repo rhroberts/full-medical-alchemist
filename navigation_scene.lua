@@ -34,12 +34,18 @@ function navigation_scene:load()
         green_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Green_Occupied"),
     }
 
+    -- Load controls
+    self.controls = peachy.new("assets/ui/controls.json", love.graphics.newImage("assets/ui/controls.png"), "Idle")
+
     -- add an example text box
     Greeting = textbox(
 [[Oh no! We couldn't finish our  game! We hope you faired better. Happy LD49 : )
 PS: Try pressing 'y' and 'u'.]]
     )
     Greeting.load()
+    -- pause menu
+    PauseMenu = textbox(" ")
+    PauseMenu.load()
     -- tunez
     NavTheme = love.audio.newSource("assets/audio/music/navigation_scene.ogg", "static")
 end
@@ -55,6 +61,7 @@ function navigation_scene:update(dt, gamestate)
     p2:update(dt)
     p3:update(dt)
     p4:update(dt)
+    PauseMenu.update(dt)
     if love.keyboard.isDown("e") then
         gamestate:setAlchemyScene()
     end
@@ -70,6 +77,7 @@ function navigation_scene:update(dt, gamestate)
         NavTheme:play()
     end
     Greeting.update(dt)
+    self.controls:update(dt)
 end
 
 function navigation_scene:draw(sx, sy)
@@ -129,6 +137,20 @@ function navigation_scene:draw(sx, sy)
         {{0, 0, 0}, "Press 't' to return to title screen"}, font,
         WindowWidth - tShift - 12, 24, tShift, "right"
     )
+    -- Process pause event
+    if pause then
+        physicker.locked = true
+        love.graphics.setColor(0, 0, 0, 0.5)
+        love.graphics.rectangle("fill", 0, 0, WindowWidth, WindowHeight)
+        love.graphics.setColor(1, 1, 1, 1)
+        -- PauseMenu.draw(WindowWidth/2, WindowHeight/2)
+        love.graphics.rectangle("fill", WindowWidth/4, WindowHeight/4, WindowWidth/2, WindowHeight/2)
+        self.controls:draw(WindowWidth/2 - self.controls:getWidth()/2,
+                           WindowHeight/2 - self.controls:getHeight()/2,
+                            0, sx, sy)
+    else
+        physicker.locked = false
+    end
 end
 
 function BeginContact(a, b, collision)

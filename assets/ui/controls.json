@@ -1,0 +1,64 @@
+{ "frames": [
+   {
+    "filename": "controls 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 66, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 66, "h": 44 },
+    "sourceSize": { "w": 66, "h": 44 },
+    "duration": 150
+   },
+   {
+    "filename": "controls 1.aseprite",
+    "frame": { "x": 66, "y": 0, "w": 66, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 66, "h": 44 },
+    "sourceSize": { "w": 66, "h": 44 },
+    "duration": 150
+   },
+   {
+    "filename": "controls 2.aseprite",
+    "frame": { "x": 132, "y": 0, "w": 66, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 66, "h": 44 },
+    "sourceSize": { "w": 66, "h": 44 },
+    "duration": 150
+   },
+   {
+    "filename": "controls 3.aseprite",
+    "frame": { "x": 198, "y": 0, "w": 66, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 66, "h": 44 },
+    "sourceSize": { "w": 66, "h": 44 },
+    "duration": 150
+   },
+   {
+    "filename": "controls 4.aseprite",
+    "frame": { "x": 264, "y": 0, "w": 66, "h": 44 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 66, "h": 44 },
+    "sourceSize": { "w": 66, "h": 44 },
+    "duration": 150
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.29-x64",
+  "image": "controls.png",
+  "format": "RGBA8888",
+  "size": { "w": 330, "h": 44 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 4, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "w", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

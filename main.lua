@@ -16,6 +16,7 @@ local navigationScene = require"navigation_scene"
 local alchemyScene = require"alchemy_scene"
 local titleScene = require"title_scene"
 local enterPatientScene = require"enter_patients_scene"
+local pauseScene = require"pause_scene"
 
 -- levels or scenes in our game.
 local GameState = {
@@ -24,7 +25,8 @@ local GameState = {
         titleScene = titleScene,
         enterPatientScene = enterPatientScene,
         navigationScene = navigationScene,
-        alchemyScene = alchemyScene
+        alchemyScene = alchemyScene,
+        pauseScene = pauseScene
     },
     sx = 3,
     sy = 3
@@ -35,6 +37,10 @@ local GameState = {
 
 function GameState:setTitleScene()
     self.current = self.scenes.titleScene
+end
+
+function GameState:setPauseScene()
+    self.current = self.scenes.pauseScene
 end
 
 function GameState:setEnterPatientScene()
@@ -51,6 +57,7 @@ end
 
 -- A primary callback of LÖVE that is called only once
 function love.load()
+    pause = false
     GameState.current:load()
     for _, scene in pairs(GameState.scenes) do
         scene:load()
@@ -60,6 +67,12 @@ end
 -- A primary callback of LÖVE that is called continuously
 function love.update(dt)
     GameState.current:update(dt, GameState)
+end
+
+function love.keyreleased(key)
+    if key == "escape" then
+        pause = not pause
+    end
 end
 
 -- A primary callback of LÖVE that is called continuously

@@ -45,8 +45,16 @@ function physicker:draw()
 end
 
 function physicker:update(dt)
+    if not pause then
+        self.locked = false
+    end
     if not self.locked then
         self:move(dt)
+        self.animation[self.animationName]:play()
+    else
+        self.yVel = 0
+        self.xVel = 0
+        self.animation[self.animationName]:pause()
     end
     self.animation[self.animationName]:update(dt)
     self:syncPhysics()
