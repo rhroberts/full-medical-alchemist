@@ -36,16 +36,15 @@ function navigation_scene:load()
 
     -- Load controls
     self.controls = peachy.new("assets/ui/controls.json", love.graphics.newImage("assets/ui/controls.png"), "Idle")
-
+    self.e = peachy.new("assets/ui/keys.json", love.graphics.newImage("assets/ui/keys.png"), "E")
+    self.q = peachy.new("assets/ui/keys.json", love.graphics.newImage("assets/ui/keys.png"), "Q")
+    self.esc = peachy.new("assets/ui/keys.json", love.graphics.newImage("assets/ui/keys.png"), "ESC")
     -- add an example text box
     Greeting = textbox(
 [[Oh no! We couldn't finish our  game! We hope you faired better. Happy LD49 : )
 PS: Try pressing 'y' and 'u'.]]
     )
     Greeting.load()
-    -- pause menu
-    PauseMenu = textbox(" ")
-    PauseMenu.load()
     -- tunez
     NavTheme = love.audio.newSource("assets/audio/music/navigation_scene.ogg", "static")
 end
@@ -61,7 +60,6 @@ function navigation_scene:update(dt, gamestate)
     p2:update(dt)
     p3:update(dt)
     p4:update(dt)
-    PauseMenu.update(dt)
     if love.keyboard.isDown("e") then
         gamestate:setAlchemyScene()
     end
@@ -78,6 +76,9 @@ function navigation_scene:update(dt, gamestate)
     end
     Greeting.update(dt)
     self.controls:update(dt)
+    self.e:update(dt)
+    self.q:update(dt)
+    self.esc:update(dt)
 end
 
 function navigation_scene:draw(sx, sy)
@@ -140,14 +141,26 @@ function navigation_scene:draw(sx, sy)
     -- Process pause event
     if pause then
         physicker.locked = true
-        love.graphics.setColor(0, 0, 0, 0.5)
+        love.graphics.setColor(0, 0, 0, 0.80)
         love.graphics.rectangle("fill", 0, 0, WindowWidth, WindowHeight)
         love.graphics.setColor(1, 1, 1, 1)
-        -- PauseMenu.draw(WindowWidth/2, WindowHeight/2)
-        love.graphics.rectangle("fill", WindowWidth/4, WindowHeight/4, WindowWidth/2, WindowHeight/2)
+        -- love.graphics.rectangle("fill", WindowWidth/4, WindowHeight/4, WindowWidth/2, WindowHeight/2)
         self.controls:draw(WindowWidth/2 - self.controls:getWidth()/2,
-                           WindowHeight/2 - self.controls:getHeight()/2,
+                           40,
                             0, sx, sy)
+        love.graphics.print("Movement", WindowWidth/5, 90, 0, 2, 2)
+        self.e:draw(WindowWidth/2 - self.controls:getWidth()/2,
+                    180,
+                    0, sx, sy)
+        love.graphics.print("Interact", WindowWidth/5, 190, 0, 2, 2)
+        self.q:draw(WindowWidth/2 - self.controls:getWidth()/2,
+                    260,
+                    0, sx, sy)
+        love.graphics.print("Exit Interact", WindowWidth/5, 270, 0, 2, 2)
+        self.esc:draw(WindowWidth/2 - self.controls:getWidth()/2,
+                      340,
+                      0, sx, sy)
+        love.graphics.print("Pause", WindowWidth/5, 350, 0, 2, 2)
     else
         physicker.locked = false
     end

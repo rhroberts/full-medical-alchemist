@@ -83,7 +83,7 @@ function love.draw()
     -- Only for debugging
     -- With (36, 24) grids are 20 pixels by 20 pixels
     -- 720/36 = 20 pixels and 480/24 = 20 pixels
-    -- debugGrid(36, 24)
+    debugGrid(36, 24)
 end
 
 -- Draws a grid over the window for debugging

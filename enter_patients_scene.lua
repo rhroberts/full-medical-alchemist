@@ -7,7 +7,6 @@ local patient = require"patient"
 
 local enterPatientsScene = scene:new("enter_patients")
 local accumulator = 0.0
-local complete = 0
 
 function enterPatientsScene:load()
     -- Load map file
