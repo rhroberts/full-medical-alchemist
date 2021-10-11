@@ -1,4 +1,3 @@
-local sti = require"3rd/sti/sti"
 local peachy = require("3rd/peachy/peachy")
 local scene = require"scene"
 local physicker = require"characters/physicker"
@@ -6,6 +5,8 @@ local frog = require"characters/frog"
 local cat = require"characters/cat"
 local patient = require"characters/patient"
 local textbox = require"ui/textbox"
+local tiled = require"utils/tiled"
+local tilemap = require"assets/map/map"
 
 local navigation_scene = scene:new("navigation")
 local font = love.graphics.newFont("assets/fonts/pixeldroidMenuRegular.ttf", 16)
@@ -13,18 +14,15 @@ local font = love.graphics.newFont("assets/fonts/pixeldroidMenuRegular.ttf", 16)
 function navigation_scene:load()
     -- Load map file
     Background = love.graphics.newImage("assets/map/background.png")
-    Map = sti("assets/map/map_v2.lua", {"box2d"})
     World = love.physics.newWorld(0, 0)
-    World:setCallbacks(BeginContact, EndContact)
-    Map:box2d_init(World)
-    Map.layers.Walls.visible = false
+    Colliders = tiled.newColliderGroup(World, tilemap, "Colliders")
 
     physicker:load()
     frog:load()
     cat:load()
 
     -- Load beds
-    beds = {
+    Beds = {
         blue_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Blue_Unoccupied"),
         blue_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Blue_Occupied"),
         red_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Red_Unoccupied"),
@@ -75,7 +73,6 @@ function navigation_scene:draw(sx, sy)
     love.graphics.push()
     love.graphics.scale(sx, sy)
     love.graphics.draw(Background)
-    Map:draw(0, 0, sx, sy)
     physicker:draw()
     frog:draw()
     cat:draw()
@@ -85,32 +82,32 @@ function navigation_scene:draw(sx, sy)
     p4:draw()
     -- Draw beds
     if complete_1 then
-        beds["green_oc"]:draw(223.0-beds["green_oc"]:getWidth()/2,
-                              25.0-beds["green_oc"]:getHeight()/2)
+        Beds["green_oc"]:draw(223.0-Beds["green_oc"]:getWidth()/2,
+                              25.0-Beds["green_oc"]:getHeight()/2)
     else
-        beds["green_unoc"]:draw(223.0-beds["green_unoc"]:getWidth()/2,
-                                25.0-beds["green_unoc"]:getHeight()/2)
+        Beds["green_unoc"]:draw(223.0-Beds["green_unoc"]:getWidth()/2,
+                                25.0-Beds["green_unoc"]:getHeight()/2)
     end
     if complete_2 then
-        beds["green_oc"]:draw(221.0-beds["green_oc"]:getWidth()/2,
-                                132.0-beds["green_oc"]:getHeight()/2)
+        Beds["green_oc"]:draw(221.0-Beds["green_oc"]:getWidth()/2,
+                                132.0-Beds["green_oc"]:getHeight()/2)
     else
-        beds["green_unoc"]:draw(221.0-beds["green_unoc"]:getWidth()/2,
-                                132.0-beds["green_unoc"]:getHeight()/2)
+        Beds["green_unoc"]:draw(221.0-Beds["green_unoc"]:getWidth()/2,
+                                132.0-Beds["green_unoc"]:getHeight()/2)
     end
     if complete_3 then
-        beds["blue_oc"]:draw(16.0-beds["blue_oc"]:getWidth()/2,
-                             97.0-beds["blue_oc"]:getHeight()/2)
+        Beds["blue_oc"]:draw(16.0-Beds["blue_oc"]:getWidth()/2,
+                             97.0-Beds["blue_oc"]:getHeight()/2)
     else
-        beds["blue_unoc"]:draw(16.0-beds["blue_unoc"]:getWidth()/2,
-                               97.0-beds["blue_unoc"]:getHeight()/2)
+        Beds["blue_unoc"]:draw(16.0-Beds["blue_unoc"]:getWidth()/2,
+                               97.0-Beds["blue_unoc"]:getHeight()/2)
     end
     if complete_4 then
-        beds["red_oc"]:draw(16.0-beds["red_oc"]:getWidth()/2,
-                            136.0-beds["red_oc"]:getHeight()/2)
+        Beds["red_oc"]:draw(16.0-Beds["red_oc"]:getWidth()/2,
+                            136.0-Beds["red_oc"]:getHeight()/2)
     else
-        beds["red_unoc"]:draw(16.0-beds["red_unoc"]:getWidth()/2,
-                              136.0-beds["red_unoc"]:getHeight()/2)
+        Beds["red_unoc"]:draw(16.0-Beds["red_unoc"]:getWidth()/2,
+                              136.0-Beds["red_unoc"]:getHeight()/2)
     end
     love.graphics.pop()
     Greeting.draw()
@@ -130,16 +127,16 @@ function navigation_scene:draw(sx, sy)
     )
 end
 
-function BeginContact(a, b, collision)
-    physicker:beginContact(a, b, collision)
-    frog:beginContact(a, b, collision)
-    cat:beginContact(a, b, collision)
-end
-
-function EndContact(a, b, collision)
-    physicker:endContact(a, b, collision)
-    frog:endContact(a, b, collision)
-    cat:endContact(a, b, collision)
-end
+-- function BeginContact(a, b, collision)
+--     physicker:beginContact(a, b, collision)
+--     frog:beginContact(a, b, collision)
+--     cat:beginContact(a, b, collision)
+-- end
+-- 
+-- function EndContact(a, b, collision)
+--     physicker:endContact(a, b, collision)
+--     frog:endContact(a, b, collision)
+--     cat:endContact(a, b, collision)
+-- end
 
 return navigation_scene

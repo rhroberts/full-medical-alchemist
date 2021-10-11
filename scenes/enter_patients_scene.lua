@@ -1,5 +1,4 @@
 local scene = require"scene"
-local sti = require "3rd/sti/sti"
 local peachy = require("3rd/peachy/peachy")
 local physicker = require"characters/physicker"
 local cat = require"characters/cat"
@@ -7,15 +6,14 @@ local patient = require"characters/patient"
 
 local enterPatientsScene = scene:new("enter_patients")
 local accumulator = 0.0
+local tiled = require"utils/tiled"
+local tilemap = require"assets/map/map"
 local complete = 0
 
 function enterPatientsScene:load()
     -- Load map file
-    Map = sti("assets/map/map_test.lua", {"box2d"})
     World = love.physics.newWorld(0, 0)
-    World:setCallbacks(BeginContact, EndContact)
-    Map:box2d_init(World)
-    Map.layers.Walls.visible = false
+    Colliders = tiled.newColliderGroup(World, tilemap, "Colliders")
 
     physicker:load()
     cat:load()
@@ -34,7 +32,7 @@ function enterPatientsScene:load()
     p4 = patient:new(patients[4], 4, delays[4])
     p4:load(delays[4])
     -- Load beds
-    beds = {
+    Beds = {
         blue_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Blue_Unoccupied"),
         blue_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Blue_Occupied"),
         red_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Red_Unoccupied"),
@@ -274,7 +272,7 @@ end
 function enterPatientsScene:draw(sx, sy)
     love.graphics.push()
     love.graphics.scale(sx, sy)
-    Map:draw(0, 0, sx, sy)
+    love.graphics.draw(Background)
     physicker:draw()
     cat:draw()
     p1:draw()
@@ -283,32 +281,32 @@ function enterPatientsScene:draw(sx, sy)
     p4:draw()
     -- Draw beds
     if complete_1 then
-        beds["green_oc"]:draw(223.0-beds["green_oc"]:getWidth()/2,
-                              25.0-beds["green_oc"]:getHeight()/2)
+        Beds["green_oc"]:draw(223.0-Beds["green_oc"]:getWidth()/2,
+                              25.0-Beds["green_oc"]:getHeight()/2)
     else
-        beds["green_unoc"]:draw(223.0-beds["green_unoc"]:getWidth()/2,
-                                25.0-beds["green_unoc"]:getHeight()/2)
+        Beds["green_unoc"]:draw(223.0-Beds["green_unoc"]:getWidth()/2,
+                                25.0-Beds["green_unoc"]:getHeight()/2)
     end
     if complete_2 then
-        beds["green_oc"]:draw(221.0-beds["green_oc"]:getWidth()/2,
-                                132.0-beds["green_oc"]:getHeight()/2)
+        Beds["green_oc"]:draw(221.0-Beds["green_oc"]:getWidth()/2,
+                                132.0-Beds["green_oc"]:getHeight()/2)
     else
-        beds["green_unoc"]:draw(221.0-beds["green_unoc"]:getWidth()/2,
-                                132.0-beds["green_unoc"]:getHeight()/2)
+        Beds["green_unoc"]:draw(221.0-Beds["green_unoc"]:getWidth()/2,
+                                132.0-Beds["green_unoc"]:getHeight()/2)
     end
     if complete_3 then
-        beds["blue_oc"]:draw(16.0-beds["blue_oc"]:getWidth()/2,
-                             97.0-beds["blue_oc"]:getHeight()/2)
+        Beds["blue_oc"]:draw(16.0-Beds["blue_oc"]:getWidth()/2,
+                             97.0-Beds["blue_oc"]:getHeight()/2)
     else
-        beds["blue_unoc"]:draw(16.0-beds["blue_unoc"]:getWidth()/2,
-                               97.0-beds["blue_unoc"]:getHeight()/2)
+        Beds["blue_unoc"]:draw(16.0-Beds["blue_unoc"]:getWidth()/2,
+                               97.0-Beds["blue_unoc"]:getHeight()/2)
     end
     if complete_4 then
-        beds["red_oc"]:draw(16.0-beds["red_oc"]:getWidth()/2,
-                            136.0-beds["red_oc"]:getHeight()/2)
+        Beds["red_oc"]:draw(16.0-Beds["red_oc"]:getWidth()/2,
+                            136.0-Beds["red_oc"]:getHeight()/2)
     else
-        beds["red_unoc"]:draw(16.0-beds["red_unoc"]:getWidth()/2,
-                              136.0-beds["red_unoc"]:getHeight()/2)
+        Beds["red_unoc"]:draw(16.0-Beds["red_unoc"]:getWidth()/2,
+                              136.0-Beds["red_unoc"]:getHeight()/2)
     end
     love.graphics.pop()
 end
