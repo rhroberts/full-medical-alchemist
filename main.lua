@@ -27,7 +27,7 @@ local function readEnvVars()
         return {}
     end
 
-    local availEnvVars = set:new{
+    local availEnvVars = {
         "FMA_SCENE",  -- string: name of scene to begin game on
         "FMA_MUSIC"   -- bool: whether to play game music
     }
