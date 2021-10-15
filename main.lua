@@ -9,47 +9,27 @@ of an elite group known as the Full Medical Alchemists. These are their stories.
 ]]
 
 -- Load Modules / Libraries
-local navigationScene = require"scenes.navigation_scene"
-local alchemyScene = require"scenes.alchemy_scene"
-local titleScene = require"scenes.title_scene"
-local enterPatientScene = require"scenes.enter_patients_scene"
-local set = require"utils.set"
+NavigationScene = require"scenes.navigation_scene"
+AlchemyScene = require"scenes.alchemy_scene"
+TitleScene = require"scenes.title_scene"
+EnterPatientScene = require"scenes.enter_patients_scene"
 
 -- Declare Global Parameters Here
 WindowWidth = love.graphics.getWidth()
 WindowHeight = love.graphics.getHeight()
 love.graphics.setDefaultFilter("nearest", "nearest")
-
--- Get any relevant environment variables, for development convenience
-local function readEnvVars()
-    -- in "production", i.e. normal gameplay, don't use any existing env vars for FMA
-    if string.lower(os.getenv("FMA_ENV")) == "prod" then
-        return {}
-    end
-
-    local availEnvVars = {
-        "FMA_SCENE",  -- string: name of scene to begin game on
-        "FMA_MUSIC"   -- bool: whether to play game music
-    }
-
-    local env = {}
-    for var in availEnvVars do
-        env[var] = os.getenv(var)
-    end
-
-    return env
-end
-
-Env = readEnvVars()
+Env = require"utils.env"
 
 -- levels or scenes in our game.
 local GameState = {
-    current = titleScene,
+    -- start at title unless otherwise specified in Env
+    current = Env.FMA_SCENE and _G[Env.FMA_SCENE] or TitleScene,
+    -- current = TitleScene,
     scenes = {
-        titleScene = titleScene,
-        enterPatientScene = enterPatientScene,
-        navigationScene = navigationScene,
-        alchemyScene = alchemyScene
+        TitleScene = TitleScene,
+        EnterPatientScene = EnterPatientScene,
+        NavigationScene = NavigationScene,
+        AlchemyScene = AlchemyScene
     },
     sx = 3,  -- x scale
     sy = 3   -- y scale
@@ -59,24 +39,23 @@ local GameState = {
 -- a scene.
 
 function GameState:setTitleScene()
-    self.current = self.scenes.titleScene
+    self.current = self.scenes.TitleScene
 end
 
 function GameState:setEnterPatientScene()
-    self.current = self.scenes.enterPatientScene
+    self.current = self.scenes.EnterPatientScene
 end
 
 function GameState:setNavigationScene()
-    self.current = self.scenes.navigationScene
+    self.current = self.scenes.NavigationScene
 end
 
 function GameState:setAlchemyScene()
-    self.current = self.scenes.alchemyScene
+    self.current = self.scenes.AlchemyScene
 end
 
 -- A primary callback of LÖVE that is called only once
 function love.load()
-    GameState.current:load()
     for _, scene in pairs(GameState.scenes) do
         scene:load()
     end

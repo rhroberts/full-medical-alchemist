@@ -18,7 +18,6 @@ function Patient:new(n, bed, delay)
     self.speak = false
     self.spritesheet = love.graphics.newImage("assets/sprites/patients/patient_" .. tostring(self.n) .. ".png")
     self.asepriteMeta = "assets/sprites/patients/patient_" .. tostring(self.n) .. ".json"
-    print("Patient is #"..tostring(self.n).." going to bed #"..tostring(self.bed).." after "..tostring(self.delay).." seconds!")
     self.__index = self
     return setmetatable({}, self)
 end
