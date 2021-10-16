@@ -1,11 +1,12 @@
-local sti = require"3rd/sti/sti"
-local peachy = require("3rd/peachy/peachy")
+local sti = require"3rd.sti.sti"
+local peachy = require"3rd.peachy"
 local scene = require"scene"
-local physicker = require"characters/physicker"
-local frog = require"characters/frog"
-local cat = require"characters/cat"
-local patient = require"characters/patient"
-local textbox = require"ui/textbox"
+local physicker = require"characters.physicker"
+local frog = require"characters.frog"
+local cat = require"characters.cat"
+local patient = require"characters.patient"
+local textbox = require"ui.textbox"
+local music = require"audio.music"
 
 local navigation_scene = scene:new("navigation")
 local font = love.graphics.newFont("assets/fonts/pixeldroidMenuRegular.ttf", 16)
@@ -39,7 +40,7 @@ PS: Try pressing 'y' and 'u'.]]
     )
     Greeting.load()
     -- tunez
-    NavTheme = love.audio.newSource("assets/audio/music/navigation_scene.ogg", "static")
+    NavTheme = music:load("assets/audio/music/navigation_scene.ogg", "static")
 end
   
 

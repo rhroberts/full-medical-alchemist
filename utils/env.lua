@@ -4,33 +4,65 @@
     For development, it is nice to be able to skip to a particular scene,
     or turn off the music, etc. Setting environment variables outside of
     the code itself seems like a clean way to handle this.
+
+    TODO: enforce the option parameter in getEnv()
 ]]
 local privacy = require"utils.privacy"
 local set = require"utils.set"
 
--- available environment variables
-local availEnvVars = {
-    "FMA_PROD",   -- bool: if true, no other env vars will be used
-    "FMA_SCENE",  -- string: name of scene to begin game on
-    "FMA_MUSIC",  -- bool: whether to play game music
+local envVars = {
+    FMA_PROD = {
+        name = "FMA_PROD",
+        type = "boolean",
+        options = set:new{true, false},
+        default = false,
+        description = "If `true`, ignore all other environment variables. This is 'normal' gameplay."
+    },
+    FMA_MUSIC = {
+        name = "FMA_MUSIC",
+        type = "boolean",
+        options = set:new{true, false},
+        default = true,
+        description = "Whether or not to play game music."
+    },
+    FMA_SCENE = {
+        name = "FMA_SCENE",
+        type = "string",
+        options = set:new{
+            "TitleScene", "EnterPatientsScene", "NavigationScene", "AlchemyScene"
+        },
+        default = "TitleScene",
+        description = "Which scene to start the game on."
+    }
 }
 
--- Get any relevant OS environment variables
+local function stringToBool(s)
+    s = string.lower(s)
+    if s == "true" then
+        return true
+    elseif s == "false" then
+        return false
+    end
+end
+
+-- Get environment variable values from OS, add to envVars table
 local function getEnv()
-    -- in "production", i.e. normal gameplay,
-    -- don't use any existing env vars for FMA
-    if string.lower(os.getenv("FMA_PROD") or "") == "prod" then
+    for _, var in pairs(envVars) do
+        local ev = os.getenv(var.name)
+        if not ev then
+            var.value = var.default
+        elseif var.type == "boolean" then
+           var.value = stringToBool(ev)
+        else
+            var.value = ev
+        end
+    end
+
+    -- return a readonly table of env vars (or empty table for production environment)
+    if envVars.FMA_PROD.value then
         return privacy.readOnly{}
     end
-
-    local env = {}
-    for _, var in pairs(availEnvVars) do
-        env[var] = os.getenv(var)
-    end
-
-    -- return a readonly table of env vars and their values
-    ---return privacy.readOnly(env)
-    return privacy.readOnly(env)
+    return privacy.readOnly(envVars)
 end
 
 return getEnv()

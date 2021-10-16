@@ -29,6 +29,12 @@ function set:contains(item)
     return self._items[item] ~= nil
 end
 
+function set:items()
+    -- iterator function
+    -- example usage: `for item in set:items() do print(item) end`
+    return pairs(self._items)
+end
+
 function set:new(t)
     if t then
         assert(type(t) == "table", "Argument must be a table!")

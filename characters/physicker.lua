@@ -1,6 +1,6 @@
 -- the main character, Mr. Physicker
 
-local peachy = require("3rd/peachy/peachy")
+local peachy = require("3rd.peachy")
 
 -- only one physicker, so no metatable shenanigans here
 local physicker = {

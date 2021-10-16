@@ -1,5 +1,5 @@
-local peachy = require"3rd/peachy/peachy"
-local textbox = require"ui/textbox"
+local peachy = require"3rd.peachy"
+local textbox = require"ui.textbox"
 
 Patient = {}
 

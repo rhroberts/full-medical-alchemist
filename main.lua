@@ -23,7 +23,7 @@ Env = require"utils.env"
 -- levels or scenes in our game.
 local GameState = {
     -- start at title unless otherwise specified in Env
-    current = Env.FMA_SCENE and _G[Env.FMA_SCENE] or TitleScene,
+    current = Env.FMA_SCENE.value and _G[Env.FMA_SCENE.value] or TitleScene,
     -- current = TitleScene,
     scenes = {
         TitleScene = TitleScene,

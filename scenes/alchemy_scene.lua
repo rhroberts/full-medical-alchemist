@@ -1,4 +1,4 @@
-local peachy = require"3rd/peachy/peachy"
+local peachy = require"3rd.peachy"
 local scene = require"scene"
 
 local alchemy_scene = scene:new("alchemy")
