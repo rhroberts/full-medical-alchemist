@@ -1,5 +1,4 @@
 local scene = require"scene"
-local sti = require "3rd.sti.sti"
 local peachy = require"3rd.peachy"
 local physicker = require"characters.physicker"
 local cat = require"characters.cat"
