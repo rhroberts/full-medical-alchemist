@@ -55,7 +55,8 @@ end
 function borked:draw()
     if self.spawn then
         self.animation[self.anim]:draw(
-            self.x + self.xshift - width / 2, self.y - height / 2, 0, self.xdir, 1
+            self.x + self.xshift - self.width / 2,
+            self.y - self.height / 2, 0, self.xdir, 1
         )
     end
 end
