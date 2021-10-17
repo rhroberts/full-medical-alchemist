@@ -1,6 +1,6 @@
 -- the main character, Mr. cat
 
-local peachy = require("3rd/peachy/peachy")
+local peachy = require("3rd.peachy")
 
 -- only one cat, so no metatable shenanigans here
 local cat = {

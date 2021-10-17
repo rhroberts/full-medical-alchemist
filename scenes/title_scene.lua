@@ -1,5 +1,6 @@
-local peachy = require"3rd/peachy/peachy"
+local peachy = require"3rd.peachy"
 local scene = require"scene"
+local music = require"audio.music"
 
 local titleScene = scene:new("titleScene")
 
@@ -11,7 +12,7 @@ function titleScene:load()
         text = "Press [enter] to start!",
         font = love.graphics.newFont("assets/fonts/pixeldroidMenuRegular.ttf", 24)
     }
-    self.titleTheme = love.audio.newSource("assets/audio/music/title_scene.ogg", "static")
+    self.titleTheme = music:load("assets/audio/music/title_scene.ogg", "static")
 end
 
 function titleScene:update(dt, gameState)

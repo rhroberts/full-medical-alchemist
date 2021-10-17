@@ -1,17 +1,7 @@
 -- the main character, Mr. frog
 
-local peachy = require("3rd/peachy/peachy")
+local peachy = require("3rd.peachy")
 
--- only one frog, so no metatable shenanigans here
-local frog = {
-    spawn = false,
-    x = 50,
-    y = 50,
-    xVel = 0,
-    yVel = 0,
-    vel = 50,
-    anim = "idle_fwd",
-}
 local keypress = "d"
 local xshift = 0
 local xdir = 1
@@ -21,7 +11,10 @@ local direction = math.random(4)
 local directions = {"w", "s", "a", "d"}
 local action = false
 
+local frog = {}
+
 function frog:load()
+    math.randomseed(os.time())
     local spritesheet = love.graphics.newImage("assets/sprites/patients/frog.png")
     local aseprite_meta = "assets/sprites/patients/frog.json"
     self.animation = {
@@ -32,12 +25,18 @@ function frog:load()
         idle_side = peachy.new(aseprite_meta, spritesheet, "Idle_Side"),
         walk_side = peachy.new(aseprite_meta, spritesheet, "Walk_Side"),
     }
-    width = self.animation["idle_fwd"]:getWidth()
-    height = self.animation["idle_fwd"]:getHeight()
-    math.randomseed(os.time())
+    self.spawn = false
+    self.x = 50
+    self.y = 50
+    self.xVel = 0
+    self.yVel = 0
+    self.vel = 50
+    self.anim = "idle_fwd"
+    self.width = self.animation["idle_fwd"]:getWidth()
+    self.height = self.animation["idle_fwd"]:getHeight()
     self.physics = {}
     self.physics.body = love.physics.newBody(World, self.x, self.y, "dynamic")
-    self.physics.shape = love.physics.newRectangleShape(width, height)
+    self.physics.shape = love.physics.newRectangleShape(self.width, self.height)
     self.physics.fixture = love.physics.newFixture(self.physics.body, self.physics.shape)
     self.ribbet = love.audio.newSource("assets/audio/effects/frog.ogg", "static")
 end

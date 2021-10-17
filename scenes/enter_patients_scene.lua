@@ -1,8 +1,10 @@
 local scene = require"scene"
-local peachy = require("3rd/peachy/peachy")
-local physicker = require"characters/physicker"
-local cat = require"characters/cat"
-local patient = require"characters/patient"
+local sti = require "3rd.sti.sti"
+local peachy = require"3rd.peachy"
+local physicker = require"characters.physicker"
+local cat = require"characters.cat"
+local patient = require"characters.patient"
+local music = require"audio.music"
 
 local enterPatientsScene = scene:new("enter_patients")
 local accumulator = 0.0
@@ -41,7 +43,7 @@ function enterPatientsScene:load()
         green_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Green_Occupied"),
     }
     -- tunez
-    NavTheme = love.audio.newSource("assets/audio/music/navigation_scene.ogg", "static")
+    NavTheme = music:load("assets/audio/music/navigation_scene.ogg", "static")
 end
 
 function shuffle(t)
