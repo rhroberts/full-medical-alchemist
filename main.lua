@@ -56,6 +56,7 @@ end
 
 -- A primary callback of LÖVE that is called only once
 function love.load()
+    World = love.physics.newWorld(0, 0)
     for _, scene in pairs(GameState.scenes) do
         scene:load()
     end

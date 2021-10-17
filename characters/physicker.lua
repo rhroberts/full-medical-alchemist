@@ -89,17 +89,4 @@ function physicker:move(dt)
     end
 end
 
-function physicker:beginContact(a, b, collision)
-    -- side effects go here
-end
-
-function physicker:endContact(a, b, collision)
-    -- side effects go here
-end
-
-function physicker:collide(collision)
-    -- self.currentCollision = collision
-    -- self.colliding = false
-end
-
 return physicker
