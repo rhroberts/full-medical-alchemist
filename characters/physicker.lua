@@ -31,7 +31,6 @@ function physicker:load()
     self.physics.body:setFixedRotation(true)
     self.physics.shape = love.physics.newRectangleShape(self.width, self.height)
     self.physics.fixture = love.physics.newFixture(self.physics.body, self.physics.shape)
-    self.physics.body:setFixedRotation(true)
     self.soundEffects = {
         walking = love.audio.newSource("assets/audio/effects/walking.ogg", "static")
     }

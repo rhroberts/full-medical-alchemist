@@ -5,11 +5,11 @@ local physicker = require"characters.physicker"
 local cat = require"characters.cat"
 local patient = require"characters.patient"
 local music = require"audio.music"
+local tiled = require"utils.tiled"
+local tilemap = require"assets.map.map"
 
 local enterPatientsScene = scene:new("enter_patients")
 local accumulator = 0.0
-local tiled = require"utils/tiled"
-local tilemap = require"assets/map/map"
 local complete = 0
 
 function enterPatientsScene:load()
