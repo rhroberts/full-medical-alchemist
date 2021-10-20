@@ -1,9 +1,10 @@
 local scene = require"scene"
-local sti = require "3rd.sti.sti"
 local peachy = require"3rd.peachy"
 local physicker = require"characters.physicker"
 local patient = require"characters.patient"
 local music = require"audio.music"
+local tiled = require"utils.tiled"
+local tilemap = require"assets.map.map"
 
 local function shuffle(t)
     for i = #t, 2, -1 do
@@ -22,8 +23,9 @@ P1 = patient:new(patients[1], 1, delays[1])
 P2 = patient:new(patients[2], 2, delays[2])
 P3 = patient:new(patients[3], 3, delays[3])
 P4 = patient:new(patients[4], 4, delays[4])
+local complete_1, complete_2, complete_3, complete_4 = false, false, false, false
 -- Create beds
-local beds = {
+Beds = {
     blue_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Blue_Unoccupied"),
     blue_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Blue_Occupied"),
     red_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Red_Unoccupied"),
@@ -34,9 +36,7 @@ local beds = {
 
 function enterPatientsScene:load()
     -- Load map file
-    Map = sti("assets/map/map_test.lua", {"box2d"})
-    Map:box2d_init(World)
-    Map.layers.Walls.visible = false
+    Colliders = tiled.newColliderGroup(World, tilemap, "Colliders")
 
     physicker:load()
     -- I have no idea why I have to pass delay into patient:load as well here... 
@@ -268,7 +268,7 @@ end
 function enterPatientsScene:draw(sx, sy)
     love.graphics.push()
     love.graphics.scale(sx, sy)
-    Map:draw(0, 0, sx, sy)
+    love.graphics.draw(Background)
     physicker:draw()
     P1:draw()
     P2:draw()
@@ -276,32 +276,32 @@ function enterPatientsScene:draw(sx, sy)
     P4:draw()
     -- Draw beds
     if complete_1 then
-        beds["green_oc"]:draw(223.0-beds["green_oc"]:getWidth()/2,
-                              25.0-beds["green_oc"]:getHeight()/2)
+        Beds["green_oc"]:draw(223.0-Beds["green_oc"]:getWidth()/2,
+                              25.0-Beds["green_oc"]:getHeight()/2)
     else
-        beds["green_unoc"]:draw(223.0-beds["green_unoc"]:getWidth()/2,
-                                25.0-beds["green_unoc"]:getHeight()/2)
+        Beds["green_unoc"]:draw(223.0-Beds["green_unoc"]:getWidth()/2,
+                                25.0-Beds["green_unoc"]:getHeight()/2)
     end
     if complete_2 then
-        beds["green_oc"]:draw(221.0-beds["green_oc"]:getWidth()/2,
-                                132.0-beds["green_oc"]:getHeight()/2)
+        Beds["green_oc"]:draw(221.0-Beds["green_oc"]:getWidth()/2,
+                                132.0-Beds["green_oc"]:getHeight()/2)
     else
-        beds["green_unoc"]:draw(221.0-beds["green_unoc"]:getWidth()/2,
-                                132.0-beds["green_unoc"]:getHeight()/2)
+        Beds["green_unoc"]:draw(221.0-Beds["green_unoc"]:getWidth()/2,
+                                132.0-Beds["green_unoc"]:getHeight()/2)
     end
     if complete_3 then
-        beds["blue_oc"]:draw(16.0-beds["blue_oc"]:getWidth()/2,
-                             97.0-beds["blue_oc"]:getHeight()/2)
+        Beds["blue_oc"]:draw(16.0-Beds["blue_oc"]:getWidth()/2,
+                             97.0-Beds["blue_oc"]:getHeight()/2)
     else
-        beds["blue_unoc"]:draw(16.0-beds["blue_unoc"]:getWidth()/2,
-                               97.0-beds["blue_unoc"]:getHeight()/2)
+        Beds["blue_unoc"]:draw(16.0-Beds["blue_unoc"]:getWidth()/2,
+                               97.0-Beds["blue_unoc"]:getHeight()/2)
     end
     if complete_4 then
-        beds["red_oc"]:draw(16.0-beds["red_oc"]:getWidth()/2,
-                            136.0-beds["red_oc"]:getHeight()/2)
+        Beds["red_oc"]:draw(16.0-Beds["red_oc"]:getWidth()/2,
+                            136.0-Beds["red_oc"]:getHeight()/2)
     else
-        beds["red_unoc"]:draw(16.0-beds["red_unoc"]:getWidth()/2,
-                              136.0-beds["red_unoc"]:getHeight()/2)
+        Beds["red_unoc"]:draw(16.0-Beds["red_unoc"]:getWidth()/2,
+                              136.0-Beds["red_unoc"]:getHeight()/2)
     end
     love.graphics.pop()
 end

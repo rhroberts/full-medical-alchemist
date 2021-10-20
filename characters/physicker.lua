@@ -6,9 +6,7 @@ local peachy = require("3rd.peachy")
 local physicker = {
     x = 112,
     y = 30,
-    xVel = 0,
-    yVel = 0,
-    vel = 50,  -- default velocity to apply to xVel or yVel
+    vel = 50,
     animationName = "idle_fwd",
     xShift = 0,  -- so turning around doesn't look jumpy
     xDir = 1,
@@ -40,9 +38,10 @@ end
 
 function physicker:draw()
     self.animation[self.animationName]:draw(
-        self.x + self.xShift - self.width / 2, self.y - self.height / 2,
-        0, self.xDir, 1
+        self.physics.body:getX() + self.xShift - self.width / 2, self.physics.body:getY() - self.height / 2, 0, self.xDir, 1
     )
+    -- draw the physics body (for debugging)
+    -- love.graphics.polygon("fill", self.physics.body:getWorldPoints(self.physics.shape:getPoints()))
 end
 
 function physicker:update(dt)
@@ -50,55 +49,40 @@ function physicker:update(dt)
         self:move(dt)
     end
     self.animation[self.animationName]:update(dt)
-    self:syncPhysics()
-end
-
-function physicker:syncPhysics()
-	self.x, self.y = self.physics.body:getPosition()
-	self.physics.body:setLinearVelocity(self.xVel, self.yVel)
 end
 
 function physicker:move(dt)
     -- Set upward animations
     if love.keyboard.isDown("w") then
-        self.yVel = -self.vel
-        -- self.y = self.y - self.vel * dt
+        self.physics.body:setLinearVelocity(0, -self.vel)
         self.animationName = "walk_bwd"
     -- Set downward animations
     elseif love.keyboard.isDown("s") then
-        self.yVel = self.vel
-        -- self.y = self.y + self.vel * dt
+        self.physics.body:setLinearVelocity(0, self.vel)
         self.animationName = "walk_fwd"
+    -- Set left animations
+    elseif love.keyboard.isDown("a") then
+        self.physics.body:setLinearVelocity(-self.vel, 0)
+        self.animationName = "walk_side"
+        self.xDir = -1
+        self.xShift = self.animation[self.animationName]:getWidth()
+    -- Set right animations
+    elseif love.keyboard.isDown("d") then
+        self.physics.body:setLinearVelocity(self.vel, 0)
+        self.animationName = "walk_side"
+        self.xDir = 1
+        self.xShift = 0
+    -- Set idle animations
     else
-        self.yVel = 0
+        self.physics.body:setLinearVelocity(0, 0)
         if self.animationName == "walk_fwd" then
             self.animationName = "idle_fwd"
         elseif self.animationName == "walk_bwd" then
             self.animationName = "idle_bwd"
         end
     end
-    -- Set left animations
-    if love.keyboard.isDown("a") then
-        self.xVel = -self.vel
-        -- self.x = self.x - self.vel * dt
-        self.animationName = "walk_side"
-        self.xDir = -1
-        self.xShift = self.animation[self.animationName]:getWidth()
-    -- Set right animations
-    elseif love.keyboard.isDown("d") then
-        self.xVel = self.vel
-        -- self.x = self.x + self.vel * dt
-        self.animationName = "walk_side"
-        self.xDir = 1
-        self.xShift = 0
-    -- Set idle animations
-    else
-        self.xVel = 0
-        if self.animationName == "walk_side" then
-            self.animationName = "idle_side"
-        end
-    end
-    if (self.xVel ~= 0 or self.yVel ~= 0) and not self.soundEffects.walking:isPlaying() then
+    local x, y = self.physics.body:getLinearVelocity()
+    if (x ~= 0 or y ~= 0) and not self.soundEffects.walking:isPlaying() then
         self.soundEffects.walking:play()
     elseif self.xVel == 0 and self.yVel == 0 then
         self.soundEffects.walking:stop()
