@@ -26,11 +26,12 @@ function physicker:load()
     }
     self.width = self.animation[self.animationName]:getWidth()
     self.height = self.animation[self.animationName]:getHeight()
-    self.physics = {}
-    self.physics.body = love.physics.newBody(World, self.x, self.y, "dynamic")
-    self.physics.body:setFixedRotation(true)
-    self.physics.shape = love.physics.newRectangleShape(self.width, self.height)
+    self.physics = {
+        body = love.physics.newBody(World, self.x, self.y, "dynamic"),
+        shape = love.physics.newRectangleShape(self.width, self.height)
+    }
     self.physics.fixture = love.physics.newFixture(self.physics.body, self.physics.shape)
+    self.physics.body:setFixedRotation(true)
     self.soundEffects = {
         walking = love.audio.newSource("assets/audio/effects/walking.ogg", "static")
     }

@@ -89,34 +89,22 @@ function navigation_scene:draw(sx, sy)
     P3:draw()
     P4:draw()
     -- Draw beds
-    if complete_1 then
-        Beds["green_oc"]:draw(223.0-Beds["green_oc"]:getWidth()/2,
-                              25.0-Beds["green_oc"]:getHeight()/2)
-    else
-        Beds["green_unoc"]:draw(223.0-Beds["green_unoc"]:getWidth()/2,
-                                25.0-Beds["green_unoc"]:getHeight()/2)
-    end
-    if complete_2 then
-        Beds["green_oc"]:draw(221.0-Beds["green_oc"]:getWidth()/2,
-                                132.0-Beds["green_oc"]:getHeight()/2)
-    else
-        Beds["green_unoc"]:draw(221.0-Beds["green_unoc"]:getWidth()/2,
-                                132.0-Beds["green_unoc"]:getHeight()/2)
-    end
-    if complete_3 then
-        Beds["blue_oc"]:draw(16.0-Beds["blue_oc"]:getWidth()/2,
-                             97.0-Beds["blue_oc"]:getHeight()/2)
-    else
-        Beds["blue_unoc"]:draw(16.0-Beds["blue_unoc"]:getWidth()/2,
-                               97.0-Beds["blue_unoc"]:getHeight()/2)
-    end
-    if complete_4 then
-        Beds["red_oc"]:draw(16.0-Beds["red_oc"]:getWidth()/2,
-                            136.0-Beds["red_oc"]:getHeight()/2)
-    else
-        Beds["red_unoc"]:draw(16.0-Beds["red_unoc"]:getWidth()/2,
+    Beds["green_oc"]:draw(223.0-Beds["green_oc"]:getWidth()/2,
+                          25.0-Beds["green_oc"]:getHeight()/2)
+    Beds["green_unoc"]:draw(223.0-Beds["green_unoc"]:getWidth()/2,
+                            25.0-Beds["green_unoc"]:getHeight()/2)
+    Beds["green_oc"]:draw(221.0-Beds["green_oc"]:getWidth()/2,
+                            132.0-Beds["green_oc"]:getHeight()/2)
+    Beds["green_unoc"]:draw(221.0-Beds["green_unoc"]:getWidth()/2,
+                            132.0-Beds["green_unoc"]:getHeight()/2)
+    Beds["blue_oc"]:draw(16.0-Beds["blue_oc"]:getWidth()/2,
+                         97.0-Beds["blue_oc"]:getHeight()/2)
+    Beds["blue_unoc"]:draw(16.0-Beds["blue_unoc"]:getWidth()/2,
+                           97.0-Beds["blue_unoc"]:getHeight()/2)
+    Beds["red_oc"]:draw(16.0-Beds["red_oc"]:getWidth()/2,
+                        136.0-Beds["red_oc"]:getHeight()/2)
+    Beds["red_unoc"]:draw(16.0-Beds["red_unoc"]:getWidth()/2,
                               136.0-Beds["red_unoc"]:getHeight()/2)
-    end
     love.graphics.pop()
     Greeting.draw()
     -- hardcode instruction cuz we're outta time

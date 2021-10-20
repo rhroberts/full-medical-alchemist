@@ -103,7 +103,6 @@ function enterPatientsScene:update(dt, gamestate)
             P1.y = 23.0
         end
     end
-    
 
     -- Enter Patient 2
     if accumulator > P2.delay then
@@ -151,7 +150,6 @@ function enterPatientsScene:update(dt, gamestate)
             P2.y = 130.0
         end
     end
-    
 
     -- Enter Patient 3
     if accumulator > P3.delay then
@@ -202,7 +200,6 @@ function enterPatientsScene:update(dt, gamestate)
             P3.y = 95.0
         end
     end
-    
 
     -- Enter Patient 4
     if accumulator > P4.delay then

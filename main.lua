@@ -8,6 +8,9 @@ of an elite group known as the Full Medical Alchemists. These are their stories.
 
 ]]
 
+-- make pixels look pixel-y; call this before loading scenes!
+love.graphics.setDefaultFilter("nearest", "nearest")
+
 -- Load Modules / Libraries
 NavigationScene = require"scenes.navigation_scene"
 AlchemyScene = require"scenes.alchemy_scene"
@@ -17,7 +20,6 @@ EnterPatientScene = require"scenes.enter_patients_scene"
 -- Declare Global Parameters Here
 WindowWidth = love.graphics.getWidth()
 WindowHeight = love.graphics.getHeight()
-love.graphics.setDefaultFilter("nearest", "nearest")
 Env = require"utils.env"
 
 -- levels or scenes in our game.
