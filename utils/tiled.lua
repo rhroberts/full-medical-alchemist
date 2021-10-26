@@ -1,3 +1,5 @@
+local pprint = require"3rd.pprint"
+
 local function newColliderGroup(world, tilemap, colliderLayer)
     --[[
         NOTE: I'm not sure how lua docstrings are meant to look yet
@@ -22,7 +24,6 @@ local function newColliderGroup(world, tilemap, colliderLayer)
     assert(colliders, "No collidable objects found!")
     -- create shapes, bodies, fixtures
     local colliderGroup = {}
-    local shapes, bodies, fixtures = {}, {}, {}
     for _, collider in pairs(colliders) do
         local body = love.physics.newBody(
             world,
@@ -35,8 +36,16 @@ local function newColliderGroup(world, tilemap, colliderLayer)
             shape = love.physics.newRectangleShape(
                 collider.width, collider.height
             )
+        elseif collider.shape == "polygon" then
+            local vertices = {}
+            for _, xy in pairs(collider.polygon) do
+                for _, i in pairs(xy) do
+                    table.insert(vertices, i)
+                end
+            end
+            shape = love.physics.newPolygonShape(vertices)
         else
-            error("Collidable must be a rectangle! (for now...)")
+            error("Collidable must be either a rectangle or polygon! (for now...)")
         end
         table.insert(
             colliderGroup, {
