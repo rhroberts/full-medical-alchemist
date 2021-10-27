@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="240" height="160" tilewidth="1" tileheight="1" infinite="0" nextlayerid="6" nextobjectid="50">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="240" height="160" tilewidth="1" tileheight="1" infinite="0" nextlayerid="6" nextobjectid="56">
  <editorsettings>
-  <export target="map_v2.lua" format="lua"/>
+  <export target="map.lua" format="lua"/>
  </editorsettings>
  <tileset firstgid="1" name="background" tilewidth="240" tileheight="160" tilecount="1" columns="1">
   <image source="background.png" width="240" height="160"/>
@@ -23,7 +23,7 @@
   <object id="44" x="213" y="118" width="16" height="28"/>
   <object id="45" x="8" y="83" width="16" height="28"/>
   <object id="46" x="8" y="122" width="16" height="28"/>
-  <object id="48" x="0" y="16" width="20" height="33"/>
-  <object id="49" x="0" y="0" width="87" height="16"/>
+  <object id="49" x="0" y="0" width="86" height="16"/>
+  <object id="55" x="0" y="16" width="20" height="33"/>
  </objectgroup>
 </map>

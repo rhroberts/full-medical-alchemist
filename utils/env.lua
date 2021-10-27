@@ -5,7 +5,7 @@
     or turn off the music, etc. Setting environment variables outside of
     the code itself seems like a clean way to handle this.
 
-    TODO: enforce the option parameter in getEnv()
+    TODO: enforce the options parameter in getEnv()
 ]]
 local privacy = require"utils.privacy"
 local set = require"utils.set"
@@ -33,7 +33,14 @@ local envVars = {
         },
         default = "TitleScene",
         description = "Which scene to start the game on."
-    }
+    },
+    FMA_DEBUG = {
+        name = "FMA_DEBUG",
+        type = "boolean",
+        options = set:new{true, false},
+        default = false,
+        description = "Enable some debugging features."
+    },
 }
 
 local function stringToBool(s)

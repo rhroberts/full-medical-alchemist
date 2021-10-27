@@ -9,18 +9,6 @@ local music = require"audio.music"
 
 local navigation_scene = scene:new("navigation")
 local font = love.graphics.newFont("assets/fonts/pixeldroidMenuRegular.ttf", 16)
-local frog = borked:new(
-    50, 50, 50,
-    "assets/sprites/patients/frog.png",
-    "assets/sprites/patients/frog.json",
-    "y"
-)
-local cat = borked:new(
-    200, 100, 50,
-    "assets/sprites/patients/cat.png",
-    "assets/sprites/patients/cat.json",
-    "u"
-)
 -- create beds
 local beds = {
     blue_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Blue_Unoccupied"),
@@ -34,15 +22,11 @@ local beds = {
 function navigation_scene:load()
     -- Load map file
     Background = love.graphics.newImage("assets/map/background.png")
-    Colliders = tiled.newColliderGroup(World, tilemap, "Colliders")
     physicker:load()
-    frog:load()
-    cat:load()
-
+    Colliders = tiled.newColliderGroup(World, tilemap, "Colliders")
     -- add an example text box
     Greeting = textbox(
-[[Oh no! We couldn't finish our  game! We hope you faired better. Happy LD49 : )
-PS: Try pressing 'y' and 'u'.]]
+[[Oh no! We couldn't finish our  game! We hope you faired better. Happy LD49 : )]]
     )
     Greeting.load()
     -- tunez
@@ -51,15 +35,8 @@ end
   
 
 function navigation_scene:update(dt, gamestate)
-    World:update(dt)
-    physicker:update(dt)
     physicker.locked = false
-    frog:update(dt)
-    cat:update(dt)
-    P1:update(dt)
-    P2:update(dt)
-    P3:update(dt)
-    P4:update(dt)
+    physicker:update(dt)
     if love.keyboard.isDown("e") then
         gamestate:setAlchemyScene()
     end
@@ -80,15 +57,14 @@ end
 function navigation_scene:draw(sx, sy)
     love.graphics.push()
     love.graphics.scale(sx, sy)
+
     love.graphics.draw(Background)
-    tiled.drawColliders(Colliders)
+
+    if Env.FMA_DEBUG.value then
+        tiled.drawColliders(Colliders)
+    end
+
     physicker:draw()
-    frog:draw()
-    cat:draw()
-    P1:draw()
-    P2:draw()
-    P3:draw()
-    P4:draw()
     -- Draw beds
     Beds["green_oc"]:draw(223.0-Beds["green_oc"]:getWidth()/2,
                           25.0-Beds["green_oc"]:getHeight()/2)

@@ -6,6 +6,9 @@ local music = require"audio.music"
 local tiled = require"utils.tiled"
 local tilemap = require"assets.map.map"
 
+-- seed random num generator with unix epoch
+math.randomseed(os.time())
+
 local function shuffle(t)
     for i = #t, 2, -1 do
         local j = math.random(i)
@@ -50,7 +53,6 @@ function enterPatientsScene:load()
 end
 
 function enterPatientsScene:update(dt, gamestate)
-    World:update(dt)
     physicker:update(dt)
     physicker.locked = true
     P1:update(dt)
