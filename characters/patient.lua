@@ -1,29 +1,32 @@
-local peachy = require"3rd/peachy/peachy"
-local textbox = require"ui/textbox"
+local peachy = require"3rd.peachy"
+local textbox = require"ui.textbox"
 
-Patient = {}
+Patient = {
+    x = 112,
+    y = 171,
+    accumulator = 0,
+    vel = 50,  -- default velocity to apply to xVel or yVel
+    animationName = "idle_bwd",
+    xShift = 0,  -- so turning around doesn't look jumpy
+    xDir = 1,
+    greeting = textbox("Hello Mr. Physicker!"),
+    speak = false
+}
 
 function Patient:new(n, bed, delay)
-    self.n = n
-    self.delay = delay
-    self.bed = bed
-    self.x = 112
-    self.y = 171
-    self.accumulator = 0
-    self.vel = 50  -- default velocity to apply to xVel or yVel
-    self.animationName = "idle_bwd"
-    self.xShift = 0  -- so turning around doesn't look jumpy
-    self.xDir = 1
-    self.greeting = textbox("Hello Mr. Physicker!")
-    self.speak = false
-    self.spritesheet = love.graphics.newImage("assets/sprites/patients/patient_" .. tostring(self.n) .. ".png")
-    self.asepriteMeta = "assets/sprites/patients/patient_" .. tostring(self.n) .. ".json"
-    print("Patient is #"..tostring(self.n).." going to bed #"..tostring(self.bed).." after "..tostring(self.delay).." seconds!")
+    local tbl = {
+        n = n,
+        delay = delay,
+        bed = bed,
+    }
+    tbl.spritesheetPath = "assets/sprites/patients/patient_" .. tostring(tbl.n) .. ".png"
+    tbl.asepriteMeta = "assets/sprites/patients/patient_" .. tostring(tbl.n) .. ".json"
     self.__index = self
-    return setmetatable({}, self)
+    return setmetatable(tbl, self)
 end
 
-function Patient:load(delay)
+function Patient:load()
+    self.spritesheet = love.graphics.newImage(self.spritesheetPath)
     self.animation = {
         idle_fwd = peachy.new(self.asepriteMeta, self.spritesheet, "Idle_Fwd"),
         walk_fwd = peachy.new(self.asepriteMeta, self.spritesheet, "Walk_Fwd"),
@@ -34,7 +37,6 @@ function Patient:load(delay)
     }
     self.width = self.animation[self.animationName]:getWidth()
     self.height = self.animation[self.animationName]:getHeight()
-    self.delay = delay
     self.greeting.load()
     -- print("Patient is #"..tostring(self.n).." going to bed #"..tostring(self.bed).." after "..tostring(self.delay).." seconds!")
 end

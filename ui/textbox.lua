@@ -1,5 +1,5 @@
 -- a module for interactive textboxes!
-local peachy = require"3rd/peachy/peachy"
+local peachy = require"3rd.peachy"
 
 local function textBox(text, font, fontSize, fontColor, sound)
     -- text is a string

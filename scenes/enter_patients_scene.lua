@@ -1,262 +1,255 @@
 local scene = require"scene"
-local sti = require "3rd/sti/sti"
-local peachy = require("3rd/peachy/peachy")
-local physicker = require"characters/physicker"
-local cat = require"characters/cat"
-local patient = require"characters/patient"
+local peachy = require"3rd.peachy"
+local physicker = require"characters.physicker"
+local patient = require"characters.patient"
+local music = require"audio.music"
+local tiled = require"utils.tiled"
+local tilemap = require"assets.map.map"
 
-local enterPatientsScene = scene:new("enter_patients")
-local accumulator = 0.0
-local complete = 0
+-- seed random num generator with unix epoch
+math.randomseed(os.time())
 
-function enterPatientsScene:load()
-    -- Load map file
-    Map = sti("assets/map/map_test.lua", {"box2d"})
-    World = love.physics.newWorld(0, 0)
-    World:setCallbacks(BeginContact, EndContact)
-    Map:box2d_init(World)
-    Map.layers.Walls.visible = false
-
-    physicker:load()
-    cat:load()
-    local patients = {1, 2, 3, 4}
-    shuffle(patients)
-    local delays = {0.0, 3.0, 6.0, 9.0}
-    shuffle(delays)
-    -- I have no idea why I have to pass delay into patient:load as well here... 
-    -- it appears to overwrite whats assigned in patient:new if I dont.
-    p1 = patient:new(patients[1], 1, delays[1])
-    p1:load(delays[1])
-    p2 = patient:new(patients[2], 2, delays[2])
-    p2:load(delays[2])
-    p3 = patient:new(patients[3], 3, delays[3])
-    p3:load(delays[3])
-    p4 = patient:new(patients[4], 4, delays[4])
-    p4:load(delays[4])
-    -- Load beds
-    beds = {
-        blue_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Blue_Unoccupied"),
-        blue_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Blue_Occupied"),
-        red_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Red_Unoccupied"),
-        red_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Red_Occupied"),
-        green_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Green_Unoccupied"),
-        green_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Green_Occupied"),
-    }
-    -- tunez
-    NavTheme = love.audio.newSource("assets/audio/music/navigation_scene.ogg", "static")
-end
-
-function shuffle(t)
+local function shuffle(t)
     for i = #t, 2, -1 do
         local j = math.random(i)
         t[i], t[j] = t[j], t[i]
     end
+    return t
 end
 
+local enterPatientsScene = scene:new("enter_patients")
+local accumulator = 0.0
+
+local patients = shuffle{1, 2, 3, 4}
+local delays = shuffle{0.0, 3.0, 6.0, 9.0}
+P1 = patient:new(patients[1], 1, delays[1])
+P2 = patient:new(patients[2], 2, delays[2])
+P3 = patient:new(patients[3], 3, delays[3])
+P4 = patient:new(patients[4], 4, delays[4])
+local complete_1, complete_2, complete_3, complete_4 = false, false, false, false
+-- Create beds
+Beds = {
+    blue_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Blue_Unoccupied"),
+    blue_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Blue_Occupied"),
+    red_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Red_Unoccupied"),
+    red_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Red_Occupied"),
+    green_unoc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Green_Unoccupied"),
+    green_oc = peachy.new("assets/map/furniture/bed_cover.json", love.graphics.newImage("assets/map/furniture/bed_cover.png"), "Green_Occupied"),
+}
+
+function enterPatientsScene:load()
+    -- Load map file
+    Colliders = tiled.newColliderGroup(World, tilemap, "Colliders")
+
+    physicker:load()
+    -- I have no idea why I have to pass delay into patient:load as well here... 
+    -- it appears to overwrite whats assigned in patient:new if I dont.
+    P1:load(delays[1])
+    P2:load(delays[2])
+    P3:load(delays[3])
+    P4:load(delays[4])
+    -- tunez
+    NavTheme = music:load("assets/audio/music/navigation_scene.ogg", "static")
+end
 
 function enterPatientsScene:update(dt, gamestate)
-    World:update(dt)
     physicker:update(dt)
     physicker.locked = true
-    cat:update(dt)
-    p1:update(dt)
-    p2:update(dt)
-    p3:update(dt)
-    p4:update(dt)
+    P1:update(dt)
+    P2:update(dt)
+    P3:update(dt)
+    P4:update(dt)
 
     -- Enter Patient 1
-    if accumulator > p1.delay then
-        if accumulator-p1.delay < 1.9 then
-            p1.y = p1.y - p1.vel * dt
-            p1.animationName = "walk_bwd"
-        elseif accumulator-p1.delay < 3.0 then
-            p1.animationName = "idle_bwd"
-            p1.speak = true
-        elseif accumulator-p1.delay < 4.1 then
-            p1.x = p1.x + p1.vel * dt
-            p1.animationName = "walk_side"
-            p1.xDir = 1
-            p1.xShift = 0
-            p1.speak = false
-        elseif accumulator-p1.delay < 5.15 then
-            p1.y = p1.y - p1.vel * dt
-            p1.animationName = "walk_bwd"
-            if p1.y < 23.0 then
-                p1.y = 23.0
+    if accumulator > P1.delay then
+        if accumulator-P1.delay < 1.9 then
+            P1.y = P1.y - P1.vel * dt
+            P1.animationName = "walk_bwd"
+        elseif accumulator-P1.delay < 3.0 then
+            P1.animationName = "idle_bwd"
+            P1.speak = true
+        elseif accumulator-P1.delay < 4.1 then
+            P1.x = P1.x + P1.vel * dt
+            P1.animationName = "walk_side"
+            P1.xDir = 1
+            P1.xShift = 0
+            P1.speak = false
+        elseif accumulator-P1.delay < 5.15 then
+            P1.y = P1.y - P1.vel * dt
+            P1.animationName = "walk_bwd"
+            if P1.y < 23.0 then
+                P1.y = 23.0
             end
-        elseif accumulator-p1.delay < 6.27 then
+        elseif accumulator-P1.delay < 6.27 then
             -- Correct undershoot
-            if p1.y > 23.0 then
-                p1.y = 23.0
+            if P1.y > 23.0 then
+                P1.y = 23.0
             end
-            p1.x = p1.x + p1.vel * dt
-            p1.animationName = "walk_side"
-            p1.xDir = 1
-            p1.xShift = 0
+            P1.x = P1.x + P1.vel * dt
+            P1.animationName = "walk_side"
+            P1.xDir = 1
+            P1.xShift = 0
             -- Prevent overshoot
-            if p1.x > 223.0 then
-                p1.x = 223.0
+            if P1.x > 223.0 then
+                P1.x = 223.0
             end
         else
             -- Correct undershoot
-            if p1.x < 223.0 then
-                p1.x = 223.0
+            if P1.x < 223.0 then
+                P1.x = 223.0
             end
-            p1.animationName = "idle_fwd"
+            P1.animationName = "idle_fwd"
             complete_1 = true
             -- Ensure proper ending spot
-            p1.x = 223.0
-            p1.y = 23.0
+            P1.x = 223.0
+            P1.y = 23.0
         end
     end
-    
 
     -- Enter Patient 2
-    if accumulator > p2.delay then
-        if accumulator-p2.delay < 1.9 then
-            p2.y = p2.y - p2.vel * dt
-            p2.animationName = "walk_bwd"
-        elseif accumulator-p2.delay < 3.0 then
-            p2.animationName = "idle_bwd"
-            p2.speak = true
-        elseif accumulator-p2.delay < 4.1 then
-            p2.x = p2.x + p2.vel * dt
-            p2.animationName = "walk_side"
-            p2.xDir = 1
-            p2.xShift = 0
-            p2.speak = false
-        elseif accumulator-p2.delay < 5.2 then
-            p2.y = p2.y + p2.vel * dt
-            p2.animationName = "walk_fwd"
+    if accumulator > P2.delay then
+        if accumulator-P2.delay < 1.9 then
+            P2.y = P2.y - P2.vel * dt
+            P2.animationName = "walk_bwd"
+        elseif accumulator-P2.delay < 3.0 then
+            P2.animationName = "idle_bwd"
+            P2.speak = true
+        elseif accumulator-P2.delay < 4.1 then
+            P2.x = P2.x + P2.vel * dt
+            P2.animationName = "walk_side"
+            P2.xDir = 1
+            P2.xShift = 0
+            P2.speak = false
+        elseif accumulator-P2.delay < 5.2 then
+            P2.y = P2.y + P2.vel * dt
+            P2.animationName = "walk_fwd"
             -- Prevent overshoot
-            if p2.y > 130.0 then
-                p2.y = 130.0
+            if P2.y > 130.0 then
+                P2.y = 130.0
             end
-        elseif accumulator-p2.delay < 6.28 then
+        elseif accumulator-P2.delay < 6.28 then
             -- Correct undershoot
-            if p2.y < 130.0 then
-                p2.y = 130.0
+            if P2.y < 130.0 then
+                P2.y = 130.0
             end
-            p2.x = p2.x + p2.vel * dt
-            p2.animationName = "walk_side"
-            p2.xDir = 1
-            p2.xShift = 0
+            P2.x = P2.x + P2.vel * dt
+            P2.animationName = "walk_side"
+            P2.xDir = 1
+            P2.xShift = 0
             -- Prevent overshoot
-            if p2.x > 221.0 then
-                p2.x = 221.0
+            if P2.x > 221.0 then
+                P2.x = 221.0
             end
         else
             -- Correct undershoot
-            if p2.x < 221.0 then
-                p2.x = 221.0
+            if P2.x < 221.0 then
+                P2.x = 221.0
             end
-            p2.animationName = "idle_fwd"
+            P2.animationName = "idle_fwd"
             complete_2 = true
             -- Ensure proper ending spot
-            p2.x = 221.0
-            p2.y = 130.0
+            P2.x = 221.0
+            P2.y = 130.0
         end
     end
-    
 
     -- Enter Patient 3
-    if accumulator > p3.delay then
-        if accumulator-p3.delay < 1.9 then
-            p3.y = p3.y - p3.vel * dt
-            p3.animationName = "walk_bwd"
-        elseif accumulator-p3.delay < 3.0 then
-            p3.animationName = "idle_bwd"
-            p3.speak = true
-        elseif accumulator-p3.delay < 3.3 then
-            p3.y = p3.y - p3.vel * dt
-            p3.animationName = "walk_bwd"
-            p3.speak = false
-        elseif accumulator-p3.delay < 4.5 then
-            p3.x = p3.x - p3.vel * dt
-            p3.animationName = "walk_side"
-            p3.xDir = -1
-            p3.xShift = p3.animation[p3.animationName]:getWidth()
-        elseif accumulator-p3.delay < 5.175 then
-            p3.y = p3.y + p3.vel * dt
-            p3.animationName = "walk_fwd"
+    if accumulator > P3.delay then
+        if accumulator-P3.delay < 1.9 then
+            P3.y = P3.y - P3.vel * dt
+            P3.animationName = "walk_bwd"
+        elseif accumulator-P3.delay < 3.0 then
+            P3.animationName = "idle_bwd"
+            P3.speak = true
+        elseif accumulator-P3.delay < 3.3 then
+            P3.y = P3.y - P3.vel * dt
+            P3.animationName = "walk_bwd"
+            P3.speak = false
+        elseif accumulator-P3.delay < 4.5 then
+            P3.x = P3.x - P3.vel * dt
+            P3.animationName = "walk_side"
+            P3.xDir = -1
+            P3.xShift = P3.animation[P3.animationName]:getWidth()
+        elseif accumulator-P3.delay < 5.175 then
+            P3.y = P3.y + P3.vel * dt
+            P3.animationName = "walk_fwd"
             -- Prevent overshoot
-            if p3.y > 95.0 then
-                p3.y = 95.0
+            if P3.y > 95.0 then
+                P3.y = 95.0
             end
-        elseif accumulator-p3.delay < 5.882 then
+        elseif accumulator-P3.delay < 5.882 then
             -- Correct undershoot
-            if p3.y < 95.0 then
-                p3.y = 95.0
+            if P3.y < 95.0 then
+                P3.y = 95.0
             end
-            p3.x = p3.x - p3.vel * dt
-            p3.animationName = "walk_side"
-            p3.xDir = -1
-            p3.xShift = p3.animation[p3.animationName]:getWidth()
+            P3.x = P3.x - P3.vel * dt
+            P3.animationName = "walk_side"
+            P3.xDir = -1
+            P3.xShift = P3.animation[P3.animationName]:getWidth()
             -- Prevent overshoot
-            if p3.x < 16.0 then
-                p3.x = 16.0
+            if P3.x < 16.0 then
+                P3.x = 16.0
             end
         else
             -- Correct undershoot
-            if p3.x > 16.0 then
-                p3.x = 16.0
+            if P3.x > 16.0 then
+                P3.x = 16.0
             end
-            p3.animationName = "idle_fwd"
+            P3.animationName = "idle_fwd"
             complete_3 = true
             -- Ensure proper ending spot
-            p3.x = 16.0
-            p3.y = 95.0
+            P3.x = 16.0
+            P3.y = 95.0
         end
     end
-    
 
     -- Enter Patient 4
-    if accumulator > p4.delay then
-        if accumulator-p4.delay < 1.9 then
-            p4.y = p4.y - p4.vel * dt
-            p4.animationName = "walk_bwd"
-        elseif accumulator-p4.delay < 3.0 then
-            p4.animationName = "idle_bwd"
-            p4.speak = true
-        elseif accumulator-p4.delay < 3.3 then
-            p4.y = p4.y - p4.vel * dt
-            p4.animationName = "walk_bwd"
-            p4.speak = false
-        elseif accumulator-p4.delay < 4.5 then
-            p4.x = p4.x - p4.vel * dt
-            p4.animationName = "walk_side"
-            p4.xDir = -1
-            p4.xShift = p4.animation[p4.animationName]:getWidth()
-        elseif accumulator-p4.delay < 5.975 then
-            p4.y = p4.y + p4.vel * dt
-            p4.animationName = "walk_fwd"
+    if accumulator > P4.delay then
+        if accumulator-P4.delay < 1.9 then
+            P4.y = P4.y - P4.vel * dt
+            P4.animationName = "walk_bwd"
+        elseif accumulator-P4.delay < 3.0 then
+            P4.animationName = "idle_bwd"
+            P4.speak = true
+        elseif accumulator-P4.delay < 3.3 then
+            P4.y = P4.y - P4.vel * dt
+            P4.animationName = "walk_bwd"
+            P4.speak = false
+        elseif accumulator-P4.delay < 4.5 then
+            P4.x = P4.x - P4.vel * dt
+            P4.animationName = "walk_side"
+            P4.xDir = -1
+            P4.xShift = P4.animation[P4.animationName]:getWidth()
+        elseif accumulator-P4.delay < 5.975 then
+            P4.y = P4.y + P4.vel * dt
+            P4.animationName = "walk_fwd"
             -- Prevent overshoot
-            if p4.y > 134.0 then
-                p4.y = 134.0
+            if P4.y > 134.0 then
+                P4.y = 134.0
             end
-        elseif accumulator-p4.delay < 6.685 then
+        elseif accumulator-P4.delay < 6.685 then
             -- Correct undershoot
-            if p4.y < 134.0 then
-                p4.y = 134.0
+            if P4.y < 134.0 then
+                P4.y = 134.0
             end
-            p4.x = p4.x - p4.vel * dt
-            p4.animationName = "walk_side"
-            p4.xDir = -1
-            p4.xShift = p4.animation[p4.animationName]:getWidth()
+            P4.x = P4.x - P4.vel * dt
+            P4.animationName = "walk_side"
+            P4.xDir = -1
+            P4.xShift = P4.animation[P4.animationName]:getWidth()
             -- Prevent overshoot
-            if p4.x < 16.0 then
-                p4.x = 16.0
+            if P4.x < 16.0 then
+                P4.x = 16.0
             end
         else
             -- Correct undershoot
-            if p4.x > 16.0 then
-                p4.x = 16.0
+            if P4.x > 16.0 then
+                P4.x = 16.0
             end
-            p4.animationName = "idle_fwd"
+            P4.animationName = "idle_fwd"
             complete_4 = true
             -- Ensure proper ending spot
-            p4.x = 16.0
-            p4.y = 134.0
+            P4.x = 16.0
+            P4.y = 134.0
         end
     end
     
@@ -274,41 +267,40 @@ end
 function enterPatientsScene:draw(sx, sy)
     love.graphics.push()
     love.graphics.scale(sx, sy)
-    Map:draw(0, 0, sx, sy)
+    love.graphics.draw(Background)
     physicker:draw()
-    cat:draw()
-    p1:draw()
-    p2:draw()
-    p3:draw()
-    p4:draw()
+    P1:draw()
+    P2:draw()
+    P3:draw()
+    P4:draw()
     -- Draw beds
     if complete_1 then
-        beds["green_oc"]:draw(223.0-beds["green_oc"]:getWidth()/2,
-                              25.0-beds["green_oc"]:getHeight()/2)
+        Beds["green_oc"]:draw(223.0-Beds["green_oc"]:getWidth()/2,
+                              25.0-Beds["green_oc"]:getHeight()/2)
     else
-        beds["green_unoc"]:draw(223.0-beds["green_unoc"]:getWidth()/2,
-                                25.0-beds["green_unoc"]:getHeight()/2)
+        Beds["green_unoc"]:draw(223.0-Beds["green_unoc"]:getWidth()/2,
+                                25.0-Beds["green_unoc"]:getHeight()/2)
     end
     if complete_2 then
-        beds["green_oc"]:draw(221.0-beds["green_oc"]:getWidth()/2,
-                                132.0-beds["green_oc"]:getHeight()/2)
+        Beds["green_oc"]:draw(221.0-Beds["green_oc"]:getWidth()/2,
+                                132.0-Beds["green_oc"]:getHeight()/2)
     else
-        beds["green_unoc"]:draw(221.0-beds["green_unoc"]:getWidth()/2,
-                                132.0-beds["green_unoc"]:getHeight()/2)
+        Beds["green_unoc"]:draw(221.0-Beds["green_unoc"]:getWidth()/2,
+                                132.0-Beds["green_unoc"]:getHeight()/2)
     end
     if complete_3 then
-        beds["blue_oc"]:draw(16.0-beds["blue_oc"]:getWidth()/2,
-                             97.0-beds["blue_oc"]:getHeight()/2)
+        Beds["blue_oc"]:draw(16.0-Beds["blue_oc"]:getWidth()/2,
+                             97.0-Beds["blue_oc"]:getHeight()/2)
     else
-        beds["blue_unoc"]:draw(16.0-beds["blue_unoc"]:getWidth()/2,
-                               97.0-beds["blue_unoc"]:getHeight()/2)
+        Beds["blue_unoc"]:draw(16.0-Beds["blue_unoc"]:getWidth()/2,
+                               97.0-Beds["blue_unoc"]:getHeight()/2)
     end
     if complete_4 then
-        beds["red_oc"]:draw(16.0-beds["red_oc"]:getWidth()/2,
-                            136.0-beds["red_oc"]:getHeight()/2)
+        Beds["red_oc"]:draw(16.0-Beds["red_oc"]:getWidth()/2,
+                            136.0-Beds["red_oc"]:getHeight()/2)
     else
-        beds["red_unoc"]:draw(16.0-beds["red_unoc"]:getWidth()/2,
-                              136.0-beds["red_unoc"]:getHeight()/2)
+        Beds["red_unoc"]:draw(16.0-Beds["red_unoc"]:getWidth()/2,
+                              136.0-Beds["red_unoc"]:getHeight()/2)
     end
     love.graphics.pop()
 end
